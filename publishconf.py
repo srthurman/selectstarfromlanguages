@@ -11,7 +11,7 @@ sys.path.append(os.curdir)
 from pelicanconf import *
 
 #SITEURL = 'http://selectstarfromlanguages.com'
-SITEURL = ''
+SITEURL = 'http://www.selectstarfromlanguages.com'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
