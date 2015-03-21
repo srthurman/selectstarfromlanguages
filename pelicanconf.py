@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Sara Thurman'
 SITENAME = u'Select * from Languages'
-#SITEURL = ''
 SITEURL = ''
 
 PATH = 'content'
@@ -15,7 +14,7 @@ DEFAULT_LANG = u'en'
 
 
 # Static paths will be copied without parsing their contents
-STATIC_PATHS = ['extra']
+STATIC_PATHS = ['extra','images']
 
 # Shift the installed location of a file
 EXTRA_PATH_METADATA = {
@@ -43,10 +42,13 @@ DEFAULT_PAGINATION = 10
 
 # Theme settings
 THEME = '/home/sarat/python/pelican_themes/pelican-themes/gum'
+#THEME = '/home/sarat/python/pelican_themes/pelican-elegant'
 
 
 GITHUB_URL = 'https://github.com/srthurman'
 TWITTER_URL = 'https://twitter.com/thurmSR'
+
+#MD_EXTENSIONS = ['markdown.extensions.sane_lists']
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

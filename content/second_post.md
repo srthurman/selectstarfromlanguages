@@ -6,5 +6,6 @@ Category: Humans
 Tags: Pelican, python
 slug: second-post
 Summary: Short version for index and feeds
+status: draft
 
 Following is a review of my favorite stuff.
