@@ -70,31 +70,54 @@ Part 2: Installing GAE. Setting up the API for GEOJSON results.
 Part 3: Creating the web app on GAE consuming the API. Integrating with GitHub for route editing updates.</p>
 <p>THIS IS PART 1
 &lt;<Put in description of how this project came about>&gt;
-The first thing we want to do is download the GTFS data. Do this by going <here>. If you're not familiar with GTFS, go to //this page// to learn all the details. What we need to do is 1. figure out what the routes are and 2. create those routes in the form of GEOJSON.</p>
-<p>For 1., we need to look at the following </p>
+The first thing we want to do is download the GTFS data. Do this by going <here>. If you're not familiar with GTFS, go to the <a href="https://developers.google.com/transit/gtfs/reference">GTFS Reference</a> page to learn all the details. What we need to do is 1. figure out what the routes are and 2. create those routes in the form of GEOJSON.</p>
+<p>We need to do step 1 since this GTFS doesn't contain a robust shapes.txt file. There are a few routes in there, but not enough to be of real use.</p>
 <p>For 2., we're going to use PostgreSQL and PostGIS. If you're unfamiliar with relational databases, well that's a large topic unto itself. The PostgreSQL documentation has a good overview. I also like Lynda.com's "Intro to Relational Databases" course. To further complicate things, PostgreSQL is technically an object relational database (ORD). We won't get into the details of what that means.
 As for postgres, I'm on xubuntu, but you can use it on windows or mac as well (double check this). See <a href="https://help.ubuntu.com/community/PostgreSQL">this documentation</a> for full details.</p>
 <p>And yes, ESRI has a tool that will do this with ArcGIS. So if you have access to that you can skip the rest of the post. You will just need to export those as GEOJSON yourself. I'm doing this with free tools.</p>
-<p>To install I ran
-'''
-sudo apt-get install postgresql postgresql-contrib pgadmin3
-'''
-I'm installing postgreSQL along with pgadmin3, a GUI for interacting with the databases, and postgis, the spatial extension for PostgreSQL. According to the official Ubuntu documentation you just need to install 'postgis', but I found that didn't work when trying to create the postgis extension on my database, as described below. Instead I installed:
-'sudo apt-get install postgresql-9.3-postgis-2.1 postgresql-9.3-postgis-2.1-scripts'</p>
-<p>I made sure before doing so that I was in fact running with postgresql 9.3. If you do 'apt-cache search postgres' you can see all the packages related to postgresql.</p>
+<p>To install I ran</p>
+<div class="highlight"><pre>sudo apt-get install postgresql postgresql-contrib pgadmin3
+</pre></div>
+
+
+<p>I'm installing postgreSQL along with pgadmin3, a GUI for interacting with the databases, and postgis, the spatial extension for PostgreSQL. According to the official Ubuntu documentation you just need to install <code>postgis</code>, but I found that didn't work when trying to create the postgis extension on my database, as described below. Instead I installed:</p>
+<div class="highlight"><pre>sudo apt-get install postgresql-9.3-postgis-2.1 postgresql-9.3-postgis-2.1-scripts
+</pre></div>
+
+
+<p>I made sure before doing so that I was in fact running with postgresql 9.3. If you do <code>apt-cache search postgres</code> you can see all the packages related to postgresql.</p>
 <p>By default we now have a superuser named "postgres" and a database in that user account also named "postgres". This user doesn't have a password, so we'll need to create one in order to connect to the server - necessary if we're going to use the pgadmin3 tool.
-In your terminal run:
-'''
-sudo -u postgres psql postgres
-'''</p>
-<p>This command is changing to the user "postgres" on our system, running the psql command with that user (which starts the PostgreSQL interactive terminal) to open the "postgres" database. You should now see 'postgres=#'.</p>
-<p>To create a password, type '\password postgres', and then whatever password you want. Nothing will be displayed as you type.</p>
-<p>Before we go, let's also add the "adminpack" extension, which PgAdmin requires for full functionality (so say the docs. I haven't tried it without running this so I'm not sure what the full impact would be of not installing it). Simply run 'CREATE EXTENSION adminpack;' Voila.</p>
+In your terminal run:</p>
+<div class="highlight"><pre>sudo -u postgres psql postgres
+</pre></div>
+
+
+<p>This command is changing to the user "postgres" on our system, running the psql command with that user (which starts the PostgreSQL interactive terminal) to open the "postgres" database. You should now see <code>postgres=#</code>.</p>
+<p>To create a password, type <code>\password postgres</code>, and then whatever password you want. Nothing will be displayed as you type.</p>
+<p>Before we go, let's also add the "adminpack" extension, which PgAdmin requires for full functionality (so say the docs. I haven't tried it without running this so I'm not sure what the full impact would be of not installing it). Simply run <code>CREATE EXTENSION adminpack;</code> Voila.</p>
 <p>When finished hit Ctrl+D to exit the postgresql terminal.</p>
-<p>Now to create the database! Type 'sudo -u postgres createdb manila_gtfs'. The first part of this command is the same as before - changing the user to postgres. This time we are running the 'createdb' command to create a new database, which I have named "manila_gtfs". You can name yours whatever you want. NOTE: This can also be done through the PgAdmin tool.</p>
-<p>We aren't going to deal with anything related to users or external connections. We're just using PostgreSQL to set up the data as we need it and return it as GEOJSON.</p>
+<p>Now to create the database! Type <code>sudo -u postgres createdb manila_gtfs</code>. The first part of this command is the same as before - changing the user to postgres. This time we are running the <code>createdb</code> command to create a new database, which I have named "manila_gtfs". You can name yours whatever you want. NOTE: This can also be done through the PgAdmin tool.</p>
+<p>Now we will import the CSV files as tables. First we need to create the tables, with the same structure as the csv files. I'm going to show you how to do that with SQL commands rather than through pgAdmin.</p>
+<p>We'll use a handy tool someone built called the <a href="https://github.com/cbick/gtfs_SQL_importer">GTFS SQL importer</a>. It's a collection of SQL and Python commands. Clone the repo into a directory:</p>
+<div class="highlight"><pre>git clone https://github.com/cbick/gtfs_SQL_importer.git
+</pre></div>
+
+
+<p>The code in this tool assumes a standard version of the GTFS feeds, but those for Manila actually have some extra fields, and that will throw errors when we try to create the tables and import the csv's. To fix this, we can either remove the extra fields, or modify the SQL. I'm going to err on the side of the extra fields having been added because they're meaningful. So let's modify our SQL.</p>
+<p>Open the gtfs_tables.sql file. Modify the following pieces:</p>
+<ol>
+<li>To <code>create table gtfs_trips</code> add <code>route_short_name  text DEFAULT '',  wheelchair_accessible int,  trip_bikes_allowed int</code></li>
+</ol>
+<div class="highlight"><pre>cat gtfs_tables.sql <span class="se">\</span>
+  &lt;<span class="o">(</span>python import_gtfs_to_sql.py path/to/gtfs/data/directory<span class="o">)</span> <span class="se">\</span>
+  gtfs_tables_makeindexes.sql <span class="se">\</span>
+  vacuumer.sql <span class="se">\</span>
+<span class="p">|</span> psql mydbname
+</pre></div>
+
+
 <p>FOR PART 3:
-NVMND, this won't work: Create an 'alias' for running gae devserver.py file. See http://lifehacker.com/270799/create-terminal-shortcuts on creating an alias.</p>
+NVMND, this won't work: Create an <code>alias</code> for running gae devserver.py file. See http://lifehacker.com/270799/create-terminal-shortcuts on creating an alias.</p>
 <p>Resources: https://help.ubuntu.com/community/PostgreSQL</p>
             </div><!-- /.entry-content -->
 
@@ -111,13 +134,17 @@ NVMND, this won't work: Create an 'alias' for running gae devserver.py file. See
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://www.selectstarfromlanguages.com/category/misc.html">misc</a></li>
 		<li><a href="http://www.selectstarfromlanguages.com/category/science.html">Science!</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/language-learning.html">language learning</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/anki.html">anki</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/french.html">french</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/computer-language.html">computer language</a></li>
+	    <li class="tag-1"><a href="http://www.selectstarfromlanguages.com/tag/human-language.html">human language</a></li>
 </ul>
 
 
