@@ -82,7 +82,7 @@ But if you ran `encapsulateObject._EncapsulationClass__private`, blamo, you have
 ###Constructor
 A constructor is a special method that's called when an object is *created*. It's where you pass in and set any data you want the object to have. In the example above, with `DothrakiMan`, it looks like we're passing in and setting the attributes of the object with `__init__`. So `__init__` must be the constructor!
 
-Actually, no. `__init__` is technically an initalizer. The method `__new__` gets called first, and it is what creates the new instance, a.k.a. a new object. After the new object has been created, `__init__` sets the data on the object. The article [__new__() in Python](http://agiliq.com/blog/2012/06/__new__-Python/) gives a good, in depth explanation, better than I'm able to.
+Actually, no. `__init__` is technically an initializer. The method `__new__` gets called first, and it is what creates the new instance, a.k.a. a new object. After the new object has been created, `__init__` sets the data on the object. The article [__new__() in Python](http://agiliq.com/blog/2012/06/__new__-Python/) gives a good, in depth explanation, better than I'm able to.
 
 If this seems confusing, and you don't really get exactly what that means, that's ok. To be honest, I don't 100% understand the nuances, at least not in any practical sense. More importantly, you don't really need to know this to write a Python program. Odds are you're not going to need to touch `__new__`, so unless you have a specific reason to muck with it, don't worry about it. 
 
@@ -96,7 +96,7 @@ class ChildClass(ParentClass)
 
 You can redefine methods in the child class that exist in the parent class if you want different behavior. You can also add classes and attributes to the child class that don't exist in the parent class.
 
-Python supports multiple inheritance, meaning a child class can have muliple parents. Syntax is similarly straightforward:
+Python supports multiple inheritance, meaning a child class can have multiple parents. Syntax is similarly straightforward:
 
 ```python
 class ChildClass(ParentClass1, ParentClass2, ParentClass3)
@@ -151,7 +151,7 @@ The purpose of all this type checking is that you know exactly what attributes a
 
 Interfaces are a way of adding flexibility. They are nothing more than a list of empty methods that any class that uses ("implements") that interface must define. So you could have 10 very different classes all implementing the same interface. In addition, a class can implement multiple interfaces.
 
-Their utility comes from being able to check for, and base actions off of, this interface rather than a type. Let's say you have a function that takes an object as input. You want to call the `ride()` method on that input object. That could be a horse, a bike, a ferris wheel, and more. In some cases you can have a parent class everything inherits from, and you can check for that parent relationship, as any methodss available in the parent is also in the child. Since it isn't likely, in this example, that there's a logical parent class, you would need to create a different function for each different type of input you want. If instead these disparate objects all had classes that implemented some interface with a `ride` method, you no longer need different functions! You just have one function which checks for that interface.
+Their utility comes from being able to check for, and base actions off of, this interface rather than a type. Let's say you have a function that takes an object as input. You want to call the `ride()` method on that input object. That could be a horse, a bike, a ferris wheel, and more. In some cases you can have a parent class everything inherits from, and you can check for that parent relationship, as any methods available in the parent is also in the child. Since it isn't likely, in this example, that there's a logical parent class, you would need to create a different function for each different type of input you want. If instead these disparate objects all had classes that implemented some interface with a `ride` method, you no longer need different functions! You just have one function which checks for that interface.
 
 Ok ok, get to the Python. Well, that was a lot of explanation just to tell you there are no interfaces in Python, at least not formally. ABC's and their virtual classes are the closest approximation Python has.
 
@@ -178,7 +178,7 @@ class DothrakiMan(object):
 		self.horse = Horse()	
 ```
 
-Now everytime you create a new `DothrakiMan`, he will have a `Horse`. But what about those attributes we put in `DothrakiPerson`? We haven't said to inherit from that class, so we don't have a `name` or `age` on our objects. You can accomplish the same thing with compostion:
+Now every time you create a new `DothrakiMan`, he will have a `Horse`. But what about those attributes we put in `DothrakiPerson`? We haven't said to inherit from that class, so we don't have a `name` or `age` on our objects. You can accomplish the same thing with composition:
 
 ```python
 class Horse(object):
@@ -208,7 +208,7 @@ Whaaat. Yup. You can create a new `DothrakiPerson` instance, and just use that i
 Using composition over inheritance is preferred in OO Programming. There aren't hard and fast rules for when to use what. Zed Shaw has a good, brief list in [Learn Python the Hard Way](http://learnPythonthehardway.org/book/ex44.html#composition).
 
 ###Polymorphism
-This concept really confused me the first time I heard it defined. And the second. And probably a few more times after that. My best crack at definining it is that polymorphism refers to
+This concept really confused me the first time I heard it defined. And the second. And probably a few more times after that. My best crack at defining it is that polymorphism refers to
 
 1. The ability of a piece of code, given an input, to execute on that input as long as it has the required methods and attributes.
 2. The fact that the specific behavior of an attribute or method may differ between classes.
