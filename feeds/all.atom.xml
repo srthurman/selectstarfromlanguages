@@ -1,5 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Select * from Languages</title><link href="http://www.selectstarfromlanguages.com/" rel="alternate"></link><link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" rel="self"></link><id>http://www.selectstarfromlanguages.com/</id><updated>2015-03-29T00:00:00+01:00</updated><entry><title>Plan of attack for learning French</title><link href="http://www.selectstarfromlanguages.com/how_im_learning_french.html" rel="alternate"></link><updated>2015-03-29T00:00:00+01:00</updated><author><name>Sara Thurman</name></author><id>tag:www.selectstarfromlanguages.com,2015-03-29:how_im_learning_french.html</id><summary type="html">&lt;p&gt;I want to share the resources I'm using to learn French. I started this a grand total of 5 days ago, so this isn't a review.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Select * from Languages</title><link href="http://www.selectstarfromlanguages.com/" rel="alternate"></link><link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" rel="self"></link><id>http://www.selectstarfromlanguages.com/</id><updated>2015-04-12T00:00:00+02:00</updated><entry><title>Object Oriented Principles Part 1: Python</title><link href="http://www.selectstarfromlanguages.com/oo_principles_Python.html" rel="alternate"></link><updated>2015-04-12T00:00:00+02:00</updated><author><name>Sara Thurman</name></author><id>tag:www.selectstarfromlanguages.com,2015-04-12:oo_principles_Python.html</id><summary type="html">&lt;p&gt;For my latest assignment at work, I needed to learn Java, which seemed a little daunting at first. As I was going through tutorials, I was presented with a lot of Object Oriented concepts I had not come into contact with before. I knew what objects and classes were, and was familiar with the idea of inheritance. But other concepts, like interfaces, constructors, and polymorphism, were new ideas, or at least new vocabulary.&lt;/p&gt;
+&lt;p&gt;I decided to go back and learn about the basics of OO Programming, and to investigate how some of these concepts are applied in Python and Javascript. This is part 1 of 2, exploring OO Programming and Python.&lt;/p&gt;
+&lt;p&gt;It may be helpful to check out one of the resources below if you're rusty on or totally unfamiliar with OO programming. I won't go into the more common concepts in as much depth.&lt;/p&gt;
+&lt;p&gt;For reference, I'm using Python 2.7. Some of these details might be different for Python 3.&lt;/p&gt;
+&lt;h3&gt;Class&lt;/h3&gt;
+&lt;p&gt;A class is the blueprint for an object. It tells what attributes (variables/data) and methods (functions) an object should have. The basic syntax is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;className&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;parentObject&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pretty simple. Let's see an example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;DothrakiMan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hairLength&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
+        &lt;span class="c"&gt;## Units are inches, because Dothraki don&amp;#39;t use the metric system either&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hairLength&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;hairLength&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;cutHair&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="n"&gt;hairLength&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;      
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here we have a class to create a &lt;code&gt;DothrakiMan&lt;/code&gt;. We've included the attributes of a &lt;code&gt;name&lt;/code&gt;, and his &lt;code&gt;hairLength&lt;/code&gt;. He can cut his hair and, well that's it for now.&lt;/p&gt;
+&lt;h3&gt;Object&lt;/h3&gt;
+&lt;p&gt;An object is an &lt;em&gt;instance&lt;/em&gt; of a class. In other words, an object is the thing you create with a class. Let's see an example.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Drogo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DothrakiMan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Khal Drogo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;48&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;       
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now we have the &lt;strong&gt;object&lt;/strong&gt; &lt;code&gt;Drogo&lt;/code&gt;, made from the &lt;strong&gt;class&lt;/strong&gt; &lt;code&gt;DothrakiMan&lt;/code&gt;. You can make as many objects as you want from that one class.&lt;/p&gt;
+&lt;p&gt;Now that the bare basics are out of the way, let's talk about some more interesting topics.&lt;/p&gt;
+&lt;h3&gt;Encapsulation&lt;/h3&gt;
+&lt;p&gt;There are two components to encapsulation.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Grouping data and functions into a single, logical group.&lt;/li&gt;
+&lt;li&gt;Protecting those data and methods/preventing unauthorized access, aka "data hiding".&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In defining the term, some sources use just one component, some use both. Whatever the case, encapsulation is most often acheived through the use of classes (there are exceptions, which we'll see with Javascript). The whole purpose of a class is to group data and functionality into a convenient package.&lt;/p&gt;
+&lt;p&gt;Python really only uses the first component. Data hiding is kind of possible, but not fully.&lt;/p&gt;
+&lt;p&gt;A little background: in Java, when creating data or methods, you include the keyword &lt;code&gt;public&lt;/code&gt;, &lt;code&gt;private&lt;/code&gt;, or &lt;code&gt;protected&lt;/code&gt;. Those define whether or not you can directly access an item from the object created from a given class. If we pretend we created our class &lt;code&gt;DothrakiMan&lt;/code&gt; and object &lt;code&gt;Drogo&lt;/code&gt; in Java, and set the &lt;code&gt;name&lt;/code&gt; attribute as private, trying &lt;code&gt;Drogo.name&lt;/code&gt; would fail.&lt;/p&gt;
+&lt;p&gt;Here's an example of the different methods of data hiding in Python:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;EncapsulationClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pub&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;semi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;prv&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pub&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_semiPrivate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;semi&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__private&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;prv&lt;/span&gt;
+
+&lt;span class="n"&gt;encapsulateObject&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;EncapsulationClass&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In our &lt;code&gt;EncapsulationCLass&lt;/code&gt; class, we have three different attributes. The first one, &lt;code&gt;self.public&lt;/code&gt;, we have seen before. You can access it directly on an object like &lt;code&gt;encapsulateObject.public&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In the second attribute, &lt;code&gt;self._semiPrivate&lt;/code&gt;, the underscore at the beginning of the name denotes that this attribute should be regarded as private. It's letting others know they shouldn't access it directly. However, there is no enforced protection. &lt;code&gt;encapsulateObject._semiPrivate&lt;/code&gt; would run without error, and return the value of the attribute.&lt;/p&gt;
+&lt;p&gt;The last attribute has two _ at the beginning, and does provide a little extra protection through "name mangling." If you were to try to run &lt;code&gt;encapsulateObject.__private&lt;/code&gt;, you would get the error below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="ne"&gt;AttributeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;EncapsulationClass&amp;#39;&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;no&lt;/span&gt; &lt;span class="n"&gt;attribute&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__private&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But if you ran &lt;code&gt;encapsulateObject._EncapsulationClass__private&lt;/code&gt;, blamo, you have access to the attribute. So by using &lt;code&gt;objectName._className__privateAttributeName&lt;/code&gt; you can access those so called private attributes and methods.&lt;/p&gt;
+&lt;h3&gt;Constructor&lt;/h3&gt;
+&lt;p&gt;A constructor is a special method that's called when an object is &lt;em&gt;created&lt;/em&gt;. It's where you pass in and set any data you want the object to have. In the example above, with &lt;code&gt;DothrakiMan&lt;/code&gt;, it looks like we're passing in and setting the attributes of the object with &lt;code&gt;__init__&lt;/code&gt;. So &lt;code&gt;__init__&lt;/code&gt; must be the constructor!&lt;/p&gt;
+&lt;p&gt;Actually, no. &lt;code&gt;__init__&lt;/code&gt; is technically an initalizer. The method &lt;code&gt;__new__&lt;/code&gt; gets called first, and it is what creates the new instance, a.k.a. a new object. After the new object has been created, &lt;code&gt;__init__&lt;/code&gt; sets the data on the object. The article &lt;a href="http://agiliq.com/blog/2012/06/__new__-Python/"&gt;&lt;strong&gt;new&lt;/strong&gt;() in Python&lt;/a&gt; gives a good, in depth explanation, better than I'm able to.&lt;/p&gt;
+&lt;p&gt;If this seems confusing, and you don't really get exactly what that means, that's ok. To be honest, I don't 100% understand the nuances, at least not in any practical sense. More importantly, you don't really need to know this to write a Python program. Odds are you're not going to need to touch &lt;code&gt;__new__&lt;/code&gt;, so unless you have a specific reason to muck with it, don't worry about it. &lt;/p&gt;
+&lt;h3&gt;Inheritance&lt;/h3&gt;
+&lt;p&gt;Inheritance is the process of one class, the "child", taking on the attributes and methods of another class, the "parent". It's often referred to an "Is-A" relationship. For instance, a &lt;code&gt;Cat&lt;/code&gt; is a(n) &lt;code&gt;Animal&lt;/code&gt;, and a &lt;code&gt;Car&lt;/code&gt; is a &lt;code&gt;Vehicle&lt;/code&gt;. The syntax is super simple:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ChildClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ParentClass&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can redefine methods in the child class that exist in the parent class if you want different behavior. You can also add classes and attributes to the child class that don't exist in the parent class.&lt;/p&gt;
+&lt;p&gt;Python supports multiple inheritance, meaning a child class can have muliple parents. Syntax is similarly straightforward:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ChildClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ParentClass1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ParentClass2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ParentClass3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Multiple inheritance can be pretty tricky in terms of maintaing your code. &lt;a href="http://learnPythonthehardway.org/book/ex44.html"&gt;Learn Python the Hard Way, lesson 44&lt;/a&gt; has a good explanation of how to implement inheritance, as well as pitfalls to watch out for.&lt;/p&gt;
+&lt;p&gt;Abstract Base Classes (ABC) are an interesting part of inheritance. An ABC only exists to be inherited from, you can't create an instance of it. The concept exists for cases when you need a parent class that groups together most functionality, but you would never want an object created from that class. Using our example of &lt;code&gt;DothrakiMan&lt;/code&gt; from above, we might want to create a &lt;code&gt;DothrakiPerson&lt;/code&gt; parent class which contains some basic information that would apply to a man, woman, or child.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;DothrakiPerson&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;      
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Right now anyone could make a &lt;code&gt;DothrakiPerson&lt;/code&gt; object. To change this to an ABC in Python, you use the &lt;code&gt;abc&lt;/code&gt; module (and you know what that stands for now). &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ABCMeta&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;abstractmethod&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;DothrakiPerson&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;__metaclass__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ABCMeta&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;
+
+&lt;span class="nd"&gt;@abstractmethod&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;person_type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;There are two things going on here:
+1. At the beginning, set &lt;code&gt;__metaclass__&lt;/code&gt; = ABCMeta&lt;code&gt;2. Add&lt;/code&gt;@abstractmethod&lt;code&gt;decorator to a method, here&lt;/code&gt;person_type`, to turn that into a &lt;em&gt;virtual&lt;/em&gt; method. A virtual method is one which must exist on the child class, but which the parent may not implement.&lt;/p&gt;
+&lt;p&gt;An alternative way to create a virtual method is&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;person_type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;NotImplementedError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;You need to implement the person_type method&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note that if you don't include the &lt;code&gt;@abstractmethod&lt;/code&gt; decorator on any methods, you will still be allowed to create an instance of the ABC class, &lt;code&gt;DothrakiPerson&lt;/code&gt;. &lt;/p&gt;
+&lt;h3&gt;Interfaces&lt;/h3&gt;
+&lt;p&gt;In other object oriented languages, like Java, you are always tied to the type of a thing. Is it a string, an integer, a DothrakiMan? When creating a function/method, all the inputs have their types declared, and you won't be able to even attempt execution if you pass something of a different type.&lt;/p&gt;
+&lt;p&gt;The purpose of all this type checking is that you know exactly what attributes and methods you have available, and thus what actions you can take on/with your objects. You can write your code knowing what you can access, even if not the specifics (you know that any &lt;code&gt;DothrakiMan&lt;/code&gt; will have a &lt;code&gt;name&lt;/code&gt; attribute, though you won't know that name until an instance of &lt;code&gt;DothrakiMan&lt;/code&gt; has been created).&lt;/p&gt;
+&lt;p&gt;Interfaces are a way of adding flexibility. They are nothing more than a list of empty methods that any class that uses ("implements") that interface must define. So you could have 10 very different classes all implementing the same interface. In addition, a class can implement multiple interfaces.&lt;/p&gt;
+&lt;p&gt;Their utility comes from being able to check for, and base actions off of, this interface rather than a type. Let's say you have a function that takes an object as input. You want to call the &lt;code&gt;ride()&lt;/code&gt; method on that input object. That could be a horse, a bike, a ferris wheel, and more. In some cases you can have a parent class everything inherits from, and you can check for that parent relationship, as any methodss available in the parent is also in the child. Since it isn't likely, in this example, that there's a logical parent class, you would need to create a different function for each different type of input you want. If instead these disparate objects all had classes that implemented some interface with a &lt;code&gt;ride&lt;/code&gt; method, you no longer need different functions! You just have one function which checks for that interface.&lt;/p&gt;
+&lt;p&gt;Ok ok, get to the Python. Well, that was a lot of explanation just to tell you there are no interfaces in Python, at least not formally. ABC's and their virtual classes are the closest approximation Python has.&lt;/p&gt;
+&lt;p&gt;So why doesn't Python have interfaces? You don't need them! Python is a 'duck-typed' language. That means it's so easy, a duck could do it. Wait, no, that's a lie. It comes from the concept of the "duck test" - if you've got an animal that walks like a duck, swims like a duck, quacks like a duck, it must be a duck. Wikipedia sums it up nicely:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[I]n duck typing, an object's suitability is determined by the presence of certain methods and properties (with appropriate meaning), rather than the actual type of the object.
+- &lt;a href="http://en.wikipedia.org/wiki/Duck_typing"&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can check the type of an object and base action off of that, but it's usually a bad idea. If nothing else, that indicates a possible flaw in your class design - any functionality tied directly to the type of an object should usually be a part of that object (there are always exceptions though). Instead you can use the &lt;code&gt;hasattr&lt;/code&gt; or &lt;code&gt;getattr&lt;/code&gt; methods to check for presence of an attribute or method.&lt;/p&gt;
+&lt;h3&gt;Composition&lt;/h3&gt;
+&lt;p&gt;Composition, in contrast to inheritance, is a "Has-A" relationship. It represents a relationship between classes that doesn't depend on a parent/child relationship. For instance, a &lt;code&gt;Cat&lt;/code&gt; has a &lt;code&gt;Tail&lt;/code&gt;, or a &lt;code&gt;Dothraki&lt;/code&gt; has a &lt;code&gt;Horse&lt;/code&gt;. Composition works by creating an instance (an object) of one class in another class.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Horse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;DothrakiMan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hairLength&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hairLength&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;hairLength&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;horse&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Horse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;    
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now everytime you create a new &lt;code&gt;DothrakiMan&lt;/code&gt;, he will have a &lt;code&gt;Horse&lt;/code&gt;. But what about those attributes we put in &lt;code&gt;DothrakiPerson&lt;/code&gt;? We haven't said to inherit from that class, so we don't have a &lt;code&gt;name&lt;/code&gt; or &lt;code&gt;age&lt;/code&gt; on our objects. You can accomplish the same thing with compostion:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Horse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;DothrakiPerson&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;DothrakiMan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hairLength&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dothrakiPerson&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DothrakiPerson&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hairLength&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;hairLength&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;horse&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Horse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dothrakiPerson&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getName&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Whaaat. Yup. You can create a new &lt;code&gt;DothrakiPerson&lt;/code&gt; instance, and just use that instance's attributes and methods. Make sure your parent class isn't an ABC or this won't work.&lt;/p&gt;
+&lt;p&gt;Using composition over inheritance is preferred in OO Programming. There aren't hard and fast rules for when to use what. Zed Shaw has a good, brief list in &lt;a href="http://learnPythonthehardway.org/book/ex44.html#composition"&gt;Learn Python the Hard Way&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Polymorphism&lt;/h3&gt;
+&lt;p&gt;This concept really confused me the first time I heard it defined. And the second. And probably a few more times after that. My best crack at definining it is that polymorphism refers to&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The ability of a piece of code, given an input, to execute on that input as long as it has the required methods and attributes.&lt;/li&gt;
+&lt;li&gt;The fact that the specific behavior of an attribute or method may differ between classes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;An example of each. For item 1:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;polyFunction&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here, we could input strings, integers, lists, any 2 items with the &lt;code&gt;__add__&lt;/code&gt; method.&lt;/p&gt;
+&lt;p&gt;And for item 2:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sayHello&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AmericanPerson&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sayHello&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Hello&amp;#39;&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FrenchPerson&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sayHello&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Bonjour&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Both an &lt;code&gt;AmericanPerson&lt;/code&gt; and a &lt;code&gt;FrenchPerson&lt;/code&gt; have a &lt;code&gt;sayHello&lt;/code&gt; method, but the output is different for each. If you were writing code that calls the &lt;code&gt;sayHello&lt;/code&gt; method, you could pass in either.&lt;/p&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;Phew, that was a lot. I encourage you to explore the resources listed below to get more information and clarification. I hope I haven't led anyone astray or caused any confusion.&lt;/p&gt;
+&lt;p&gt;If you see any errors, factual, grammatical, whatever else, please feel free to submit it as an issue on the repository &lt;a href="https://github.com/srthurman/selectstarfromlanguages/issues"&gt;issues page&lt;/a&gt; on github.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Resources&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.jeffknupp.com/blog/2014/06/18/improve-your-Python-Python-classes-and-object-oriented-programming/"&gt;Jeff Knupp - Python Classes and OO Programming&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://learnPythonthehardway.org/book/index.html"&gt;Learn Python the Hard Way - Lessons 40-44&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.lynda.com/Programming-tutorials/Foundations-of-Programming-Object-Oriented-Design/96949-2.html"&gt;Lynda.com - Object-Oriented Design&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.Python-course.eu/object_oriented_programming.php"&gt;Python-course.eu - Object Oriented Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://lgiordani.com/blog/2014/08/21/python-3-oop-part-4-polymorphism/#.VSrjKOnd_IE"&gt;Good Morning, Polymorphism&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://agiliq.com/blog/2012/06/__new__-Python/"&gt;__new__() in Python&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="computer language"></category><category term="Python"></category><category term="java"></category><category term="object oriented"></category></entry><entry><title>Plan of attack for learning French</title><link href="http://www.selectstarfromlanguages.com/how_im_learning_french.html" rel="alternate"></link><updated>2015-03-29T00:00:00+01:00</updated><author><name>Sara Thurman</name></author><id>tag:www.selectstarfromlanguages.com,2015-03-29:how_im_learning_french.html</id><summary type="html">&lt;p&gt;I want to share the resources I'm using to learn French. I started this a grand total of 5 days ago, so this isn't a review.&lt;/p&gt;
 &lt;h3&gt;Fluent Forever&lt;/h3&gt;
 &lt;p&gt;The main technique I'll be using is that outlined by Gabriel Wyner in his book and site &lt;a href="https://fluent-forever.com/"&gt;Fluent Forever&lt;/a&gt; (FF). The basic idea is that you first train your ears to hear your new language, then start learning a base vocabulary of 625 words using only pictures, no direct translation. From there you go on to grammar and making real, comprehensible sentences. All learning is based around using the spaced repetition learning technique, using the spaced repetition software (SRS) &lt;a href="http://ankisrs.net/"&gt;Anki&lt;/a&gt;. Anki, aside from being free, is also open source and written in Python. I'll do a future post going into more detail, but if any of that is interesting to you, check out the &lt;a href="http://ankisrs.net/docs/addons.html"&gt;docs&lt;/a&gt; on creating add-ons.&lt;/p&gt;
 &lt;p&gt;Wait a minute - why would you need to train your ears before diving into vocabulary? Because there are sounds you physically cannot hear currently! Your brain just can't distinguish them. And if you can't hear a certain sound, you certainly won't be able to make that sound when speaking. Not to mention the whole not being able to understand what other people are saying thing. Gabe goes into more detail in the book, and it's pretty interesting, at least to me.&lt;/p&gt;

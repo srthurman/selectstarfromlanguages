@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>Object Oriented Principles Part 1: Python</title>
+        <meta charset="utf-8" />
+        <link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Full Atom Feed" />
+        <link href="http://www.selectstarfromlanguages.com/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/pygment.css" />
+
+        <script src="http://www.selectstarfromlanguages.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.selectstarfromlanguages.com/">Select * from Languages <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.selectstarfromlanguages.com/">Home</a></li>
+
+                <li><a href="http://www.selectstarfromlanguages.com/pages/about.html">About</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.selectstarfromlanguages.com/oo_principles_Python.html" rel="bookmark"
+                   title="Permalink to Object Oriented Principles Part 1: Python">Object Oriented Principles Part 1: Python</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-04-12T00:00:00+02:00">
+                Sun 12 April 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.selectstarfromlanguages.com/author/sara-thurman.html"> Sara Thurman</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>For my latest assignment at work, I needed to learn Java, which seemed a little daunting at first. As I was going through tutorials, I was presented with a lot of Object Oriented concepts I had not come into contact with before. I knew what objects and classes were, and was familiar with the idea of inheritance. But other concepts, like interfaces, constructors, and polymorphism, were new ideas, or at least new vocabulary.</p>
+<p>I decided to go back and learn about the basics of OO Programming, and to investigate how some of these concepts are applied in Python and Javascript. This is part 1 of 2, exploring OO Programming and Python.</p>
+<p>It may be helpful to check out one of the resources below if you're rusty on or totally unfamiliar with OO programming. I won't go into the more common concepts in as much depth.</p>
+<p>For reference, I'm using Python 2.7. Some of these details might be different for Python 3.</p>
+<h3>Class</h3>
+<p>A class is the blueprint for an object. It tells what attributes (variables/data) and methods (functions) an object should have. The basic syntax is:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">className</span><span class="p">(</span><span class="n">parentObject</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Pretty simple. Let's see an example:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">DothrakiMan</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">hairLength</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="c">## Units are inches, because Dothraki don&#39;t use the metric system either</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hairLength</span> <span class="o">=</span> <span class="n">hairLength</span>
+
+    <span class="k">def</span> <span class="nf">cutHair</span><span class="p">():</span>
+        <span class="n">hairLength</span> <span class="o">=</span> <span class="mi">0</span>      
+</pre></div>
+
+
+<p>Here we have a class to create a <code>DothrakiMan</code>. We've included the attributes of a <code>name</code>, and his <code>hairLength</code>. He can cut his hair and, well that's it for now.</p>
+<h3>Object</h3>
+<p>An object is an <em>instance</em> of a class. In other words, an object is the thing you create with a class. Let's see an example.</p>
+<div class="highlight"><pre><span class="n">Drogo</span> <span class="o">=</span> <span class="n">DothrakiMan</span><span class="p">(</span><span class="s">&#39;Khal Drogo&#39;</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>       
+</pre></div>
+
+
+<p>Now we have the <strong>object</strong> <code>Drogo</code>, made from the <strong>class</strong> <code>DothrakiMan</code>. You can make as many objects as you want from that one class.</p>
+<p>Now that the bare basics are out of the way, let's talk about some more interesting topics.</p>
+<h3>Encapsulation</h3>
+<p>There are two components to encapsulation.</p>
+<ol>
+<li>Grouping data and functions into a single, logical group.</li>
+<li>Protecting those data and methods/preventing unauthorized access, aka "data hiding".</li>
+</ol>
+<p>In defining the term, some sources use just one component, some use both. Whatever the case, encapsulation is most often acheived through the use of classes (there are exceptions, which we'll see with Javascript). The whole purpose of a class is to group data and functionality into a convenient package.</p>
+<p>Python really only uses the first component. Data hiding is kind of possible, but not fully.</p>
+<p>A little background: in Java, when creating data or methods, you include the keyword <code>public</code>, <code>private</code>, or <code>protected</code>. Those define whether or not you can directly access an item from the object created from a given class. If we pretend we created our class <code>DothrakiMan</code> and object <code>Drogo</code> in Java, and set the <code>name</code> attribute as private, trying <code>Drogo.name</code> would fail.</p>
+<p>Here's an example of the different methods of data hiding in Python:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">EncapsulationClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pub</span><span class="p">,</span> <span class="n">semi</span><span class="p">,</span> <span class="n">prv</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">public</span> <span class="o">=</span> <span class="n">pub</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_semiPrivate</span> <span class="o">=</span> <span class="n">semi</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__private</span> <span class="o">=</span> <span class="n">prv</span>
+
+<span class="n">encapsulateObject</span> <span class="o">=</span> <span class="n">EncapsulationClass</span><span class="p">()</span>
+</pre></div>
+
+
+<p>In our <code>EncapsulationCLass</code> class, we have three different attributes. The first one, <code>self.public</code>, we have seen before. You can access it directly on an object like <code>encapsulateObject.public</code>.</p>
+<p>In the second attribute, <code>self._semiPrivate</code>, the underscore at the beginning of the name denotes that this attribute should be regarded as private. It's letting others know they shouldn't access it directly. However, there is no enforced protection. <code>encapsulateObject._semiPrivate</code> would run without error, and return the value of the attribute.</p>
+<p>The last attribute has two _ at the beginning, and does provide a little extra protection through "name mangling." If you were to try to run <code>encapsulateObject.__private</code>, you would get the error below:</p>
+<div class="highlight"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">AttributeError</span><span class="p">:</span> <span class="s">&#39;EncapsulationClass&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s">&#39;__private&#39;</span>
+</pre></div>
+
+
+<p>But if you ran <code>encapsulateObject._EncapsulationClass__private</code>, blamo, you have access to the attribute. So by using <code>objectName._className__privateAttributeName</code> you can access those so called private attributes and methods.</p>
+<h3>Constructor</h3>
+<p>A constructor is a special method that's called when an object is <em>created</em>. It's where you pass in and set any data you want the object to have. In the example above, with <code>DothrakiMan</code>, it looks like we're passing in and setting the attributes of the object with <code>__init__</code>. So <code>__init__</code> must be the constructor!</p>
+<p>Actually, no. <code>__init__</code> is technically an initalizer. The method <code>__new__</code> gets called first, and it is what creates the new instance, a.k.a. a new object. After the new object has been created, <code>__init__</code> sets the data on the object. The article <a href="http://agiliq.com/blog/2012/06/__new__-Python/"><strong>new</strong>() in Python</a> gives a good, in depth explanation, better than I'm able to.</p>
+<p>If this seems confusing, and you don't really get exactly what that means, that's ok. To be honest, I don't 100% understand the nuances, at least not in any practical sense. More importantly, you don't really need to know this to write a Python program. Odds are you're not going to need to touch <code>__new__</code>, so unless you have a specific reason to muck with it, don't worry about it. </p>
+<h3>Inheritance</h3>
+<p>Inheritance is the process of one class, the "child", taking on the attributes and methods of another class, the "parent". It's often referred to an "Is-A" relationship. For instance, a <code>Cat</code> is a(n) <code>Animal</code>, and a <code>Car</code> is a <code>Vehicle</code>. The syntax is super simple:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">ChildClass</span><span class="p">(</span><span class="n">ParentClass</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You can redefine methods in the child class that exist in the parent class if you want different behavior. You can also add classes and attributes to the child class that don't exist in the parent class.</p>
+<p>Python supports multiple inheritance, meaning a child class can have muliple parents. Syntax is similarly straightforward:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">ChildClass</span><span class="p">(</span><span class="n">ParentClass1</span><span class="p">,</span> <span class="n">ParentClass2</span><span class="p">,</span> <span class="n">ParentClass3</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Multiple inheritance can be pretty tricky in terms of maintaing your code. <a href="http://learnPythonthehardway.org/book/ex44.html">Learn Python the Hard Way, lesson 44</a> has a good explanation of how to implement inheritance, as well as pitfalls to watch out for.</p>
+<p>Abstract Base Classes (ABC) are an interesting part of inheritance. An ABC only exists to be inherited from, you can't create an instance of it. The concept exists for cases when you need a parent class that groups together most functionality, but you would never want an object created from that class. Using our example of <code>DothrakiMan</code> from above, we might want to create a <code>DothrakiPerson</code> parent class which contains some basic information that would apply to a man, woman, or child.</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">DothrakiPerson</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>      
+</pre></div>
+
+
+<p>Right now anyone could make a <code>DothrakiPerson</code> object. To change this to an ABC in Python, you use the <code>abc</code> module (and you know what that stands for now). </p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span> <span class="nc">DothrakiPerson</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">ABCMeta</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+<span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">person_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+<p>There are two things going on here:
+1. At the beginning, set <code>__metaclass__</code> = ABCMeta<code>2. Add</code>@abstractmethod<code>decorator to a method, here</code>person_type`, to turn that into a <em>virtual</em> method. A virtual method is one which must exist on the child class, but which the parent may not implement.</p>
+<p>An alternative way to create a virtual method is</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">person_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;You need to implement the person_type method&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Note that if you don't include the <code>@abstractmethod</code> decorator on any methods, you will still be allowed to create an instance of the ABC class, <code>DothrakiPerson</code>. </p>
+<h3>Interfaces</h3>
+<p>In other object oriented languages, like Java, you are always tied to the type of a thing. Is it a string, an integer, a DothrakiMan? When creating a function/method, all the inputs have their types declared, and you won't be able to even attempt execution if you pass something of a different type.</p>
+<p>The purpose of all this type checking is that you know exactly what attributes and methods you have available, and thus what actions you can take on/with your objects. You can write your code knowing what you can access, even if not the specifics (you know that any <code>DothrakiMan</code> will have a <code>name</code> attribute, though you won't know that name until an instance of <code>DothrakiMan</code> has been created).</p>
+<p>Interfaces are a way of adding flexibility. They are nothing more than a list of empty methods that any class that uses ("implements") that interface must define. So you could have 10 very different classes all implementing the same interface. In addition, a class can implement multiple interfaces.</p>
+<p>Their utility comes from being able to check for, and base actions off of, this interface rather than a type. Let's say you have a function that takes an object as input. You want to call the <code>ride()</code> method on that input object. That could be a horse, a bike, a ferris wheel, and more. In some cases you can have a parent class everything inherits from, and you can check for that parent relationship, as any methodss available in the parent is also in the child. Since it isn't likely, in this example, that there's a logical parent class, you would need to create a different function for each different type of input you want. If instead these disparate objects all had classes that implemented some interface with a <code>ride</code> method, you no longer need different functions! You just have one function which checks for that interface.</p>
+<p>Ok ok, get to the Python. Well, that was a lot of explanation just to tell you there are no interfaces in Python, at least not formally. ABC's and their virtual classes are the closest approximation Python has.</p>
+<p>So why doesn't Python have interfaces? You don't need them! Python is a 'duck-typed' language. That means it's so easy, a duck could do it. Wait, no, that's a lie. It comes from the concept of the "duck test" - if you've got an animal that walks like a duck, swims like a duck, quacks like a duck, it must be a duck. Wikipedia sums it up nicely:</p>
+<blockquote>
+<p>[I]n duck typing, an object's suitability is determined by the presence of certain methods and properties (with appropriate meaning), rather than the actual type of the object.
+- <a href="http://en.wikipedia.org/wiki/Duck_typing">Wikipedia</a></p>
+</blockquote>
+<p>You can check the type of an object and base action off of that, but it's usually a bad idea. If nothing else, that indicates a possible flaw in your class design - any functionality tied directly to the type of an object should usually be a part of that object (there are always exceptions though). Instead you can use the <code>hasattr</code> or <code>getattr</code> methods to check for presence of an attribute or method.</p>
+<h3>Composition</h3>
+<p>Composition, in contrast to inheritance, is a "Has-A" relationship. It represents a relationship between classes that doesn't depend on a parent/child relationship. For instance, a <code>Cat</code> has a <code>Tail</code>, or a <code>Dothraki</code> has a <code>Horse</code>. Composition works by creating an instance (an object) of one class in another class.</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Horse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">DothrakiMan</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hairLength</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hairLength</span> <span class="o">=</span> <span class="n">hairLength</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">horse</span> <span class="o">=</span> <span class="n">Horse</span><span class="p">()</span>    
+</pre></div>
+
+
+<p>Now everytime you create a new <code>DothrakiMan</code>, he will have a <code>Horse</code>. But what about those attributes we put in <code>DothrakiPerson</code>? We haven't said to inherit from that class, so we don't have a <code>name</code> or <code>age</code> on our objects. You can accomplish the same thing with compostion:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Horse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">DothrakiPerson</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="nf">getName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<span class="k">class</span> <span class="nc">DothrakiMan</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">hairLength</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dothrakiPerson</span> <span class="o">=</span> <span class="n">DothrakiPerson</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hairLength</span> <span class="o">=</span> <span class="n">hairLength</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">horse</span> <span class="o">=</span> <span class="n">Horse</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">getName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dothrakiPerson</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Whaaat. Yup. You can create a new <code>DothrakiPerson</code> instance, and just use that instance's attributes and methods. Make sure your parent class isn't an ABC or this won't work.</p>
+<p>Using composition over inheritance is preferred in OO Programming. There aren't hard and fast rules for when to use what. Zed Shaw has a good, brief list in <a href="http://learnPythonthehardway.org/book/ex44.html#composition">Learn Python the Hard Way</a>.</p>
+<h3>Polymorphism</h3>
+<p>This concept really confused me the first time I heard it defined. And the second. And probably a few more times after that. My best crack at definining it is that polymorphism refers to</p>
+<ol>
+<li>The ability of a piece of code, given an input, to execute on that input as long as it has the required methods and attributes.</li>
+<li>The fact that the specific behavior of an attribute or method may differ between classes.</li>
+</ol>
+<p>An example of each. For item 1:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">polyFunction</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</pre></div>
+
+
+<p>Here, we could input strings, integers, lists, any 2 items with the <code>__add__</code> method.</p>
+<p>And for item 2:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">sayHello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">AmericanPerson</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">sayHello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&#39;Hello&#39;</span>
+
+<span class="k">class</span> <span class="nc">FrenchPerson</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">sayHello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&#39;Bonjour&#39;</span>
+</pre></div>
+
+
+<p>Both an <code>AmericanPerson</code> and a <code>FrenchPerson</code> have a <code>sayHello</code> method, but the output is different for each. If you were writing code that calls the <code>sayHello</code> method, you could pass in either.</p>
+<h3>Conclusion</h3>
+<p>Phew, that was a lot. I encourage you to explore the resources listed below to get more information and clarification. I hope I haven't led anyone astray or caused any confusion.</p>
+<p>If you see any errors, factual, grammatical, whatever else, please feel free to submit it as an issue on the repository <a href="https://github.com/srthurman/selectstarfromlanguages/issues">issues page</a> on github.</p>
+<p><strong>Resources</strong>:</p>
+<ul>
+<li><a href="http://www.jeffknupp.com/blog/2014/06/18/improve-your-Python-Python-classes-and-object-oriented-programming/">Jeff Knupp - Python Classes and OO Programming</a></li>
+<li><a href="http://learnPythonthehardway.org/book/index.html">Learn Python the Hard Way - Lessons 40-44</a></li>
+<li><a href="http://www.lynda.com/Programming-tutorials/Foundations-of-Programming-Object-Oriented-Design/96949-2.html">Lynda.com - Object-Oriented Design</a></li>
+<li><a href="http://www.Python-course.eu/object_oriented_programming.php">Python-course.eu - Object Oriented Python</a></li>
+<li><a href="http://lgiordani.com/blog/2014/08/21/python-3-oop-part-4-polymorphism/#.VSrjKOnd_IE">Good Morning, Polymorphism</a></li>
+<li><a href="http://agiliq.com/blog/2012/06/__new__-Python/">__new__() in Python</a></li>
+</ul>
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="http://www.selectstarfromlanguages.com/pages/about.html">About</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://www.selectstarfromlanguages.com/category/misc.html">misc</a></li>
+		<li><a href="http://www.selectstarfromlanguages.com/category/science.html">Science!</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-1"><a href="http://www.selectstarfromlanguages.com/tag/computer-language.html">computer language</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/anki.html">anki</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/french.html">french</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/java.html">java</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/object-oriented.html">object oriented</a></li>
+	    <li class="tag-1"><a href="http://www.selectstarfromlanguages.com/tag/human-language.html">human language</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/srthurman">Github</a></li>
+    <li><a href="https://twitter.com/thurmSR">Twitter</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/srthurman" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/thurmSR" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://www.selectstarfromlanguages.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.selectstarfromlanguages.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.selectstarfromlanguages.com/theme/js/plugins.js"></script>
+</body>
+</html>
