@@ -5,7 +5,7 @@ slug: tdd_duolingo_and_pep8_ohmy
 Summary: What I now know about each, from the past week or more
 Category: Weekly Roundup
 
-Wow, it's been almost a month since my last post. Getting into a grove of regular writing can be tough, so I thought it made sense to switch gears a little and reflect on what I happened to learn in a given week (or so).
+Wow, it's been almost a month since my last post. Getting into a groove of regular writing can be tough, so I thought it made sense to switch gears a little and reflect on what I happened to learn in a given week (or so).
 
 ###TDD
 TDD, or [Test-Driven Development](http://en.wikipedia.org/wiki/Test-driven_development), has been on my radar ever since I heard of Harry Percivel's book on [TDD in Python](http://www.obeythetestinggoat.com/). A very cursory reading reveals that it's nothing more than the idea of
