@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 
-        <title>Running this blog on GitHub Pages with Pelican</title>
+        <title>Java ADF and Learning Styles</title>
         <meta charset="utf-8" />
         <link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Full Atom Feed" />
-        <link href="http://www.selectstarfromlanguages.com/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Categories Atom Feed" />
+        <link href="http://www.selectstarfromlanguages.com/feeds/weekly-roundup.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -53,75 +53,35 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.selectstarfromlanguages.com/drafts/pelican_and_github_pages.html" rel="bookmark"
-                   title="Permalink to Running this blog on GitHub Pages with Pelican">Running this blog on GitHub Pages with Pelican</a></h2>
+                <a href="http://www.selectstarfromlanguages.com/java_adf_and_learning_styles.html" rel="bookmark"
+                   title="Permalink to Java ADF and Learning Styles">Java ADF and Learning Styles</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-03-08T00:00:00+01:00">
-                Sun 08 March 2015
+              <abbr class="published" title="2015-05-31T00:00:00+02:00">
+                Sun 31 May 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.selectstarfromlanguages.com/author/sara-thurman.html"> Sara Thurman</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Originally I planned on creating this blog as a Flask app, following the tutorial from <a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">Miguel Gringberg</a> (if you have ever even thought about Flask too hard, you know that name). A little more research on hosting blogs led me to the conclustion that a static blog generator would be a better choice. </p>
-<p>I'm not going to go into much detail on the why's, but it came down to wanting something I could easily customize, with little overhead, and free hosting options. See some of the resources I list below for further discussion.</p>
-<p>I chose Pelican since it is well documented, both officially and with blog posts from other users, and has many themes to choose from.</p>
-<p>I'm going to go over how I set up this blog using Pelican and hosting on GitHub Pages, and detail some trouble spots I had. I hope you find it helpful if you run into similar problems.</p>
-<h2>Initial Setup</h2>
-<p>For reference, I'm running on linux. If you're running on Windows and run into trouble feel free to contact me. I started out on Windows and run it as my other OS.</p>
-<p>If you don't already have pip installed, <a href="https://pip.pypa.io/en/latest/installing.html">do that first</a>. You will need pip for any sort of Python development, not just this project.</p>
-<p>Next, set up a virtual environment for your project (NOTE: The virtual environment isn't required, but strongly recommended). If you're not familiar with virtual environments, see <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">the docs</a> on how to install, or google until you find a tutorial that makes sense to you.</p>
-<p>Here's how I did it:</p>
-<div class="highlight"><pre>~<span class="nv">$ </span>virtualenv ~/python/virtualenvs/selectstarblog
-~<span class="nv">$ </span><span class="nb">cd</span> ~/python/virtualenvs/selectstarblog
-~/python/virtualenvs/selectstarblog<span class="nv">$ </span><span class="nb">source </span>bin/activate
-<span class="o">(</span>selectstarblog<span class="o">)</span>~/python/virtualenvs/selectstarblog<span class="nv">$ </span>
-</pre></div>
-
-
-<p>Here's what's happening line by line:</p>
-<ol>
-<li>Setting up a directory to hold the files for this blog. The directory does not need to exist already.</li>
-<li>Moving into that directory, since that's where I'll be working.</li>
-<li>Activating the directory. That means it's live, and all installs I do only affect this directory.</li>
-<li>Here's what your command line should look like once you've activated your virtual environment.</li>
-</ol>
-<h2>Installing Pelican</h2>
-<p>Installing is as easy as <code>pip install pelican</code>. You will see a lot of other libraries being installed as well, since pelican has a number of dependencies.</p>
-<p>Next run <code>pelican-quickstart</code> to get the basic structure of your site set up. You will be asked a series of questions. I used the default for most of them (in the case of y/n questions, the default is capitalized), except for:</p>
+              <p>Some insights and reflections from the past week of learning.</p>
+<h3>Java ADF</h3>
+<p>I've been tasked with creating an auto-complete street input for work, using Java as the backend. In researching possible ways to accomplish the task, I came across the Java Application Development Framework (ADF) from Oracle. It has many neat built in functions, including <a href="http://docs.oracle.com/cd/E23943_01/apirefs.1111/e12419/tagdoc/af_autoSuggestBehavior.html">autoSuggestBehavior</a>, which you can use to create an auto-complete input box. I went through this <a href="http://www.oracle.com/technetwork/developer-tools/adf/learnmore/62-autosuggestbehavior-177811.pdf">autoSuggestBehavior tutorial</a> using my own data, and got things somewhat working (e.g. it finally compiled, but didn't function correctly).</p>
+<p>At that point, I had only invested a few hours in ADF, and thought it wise to see if my supervisor viewed ADF a good framework choice for the project. She did not, so I will leave things only somewhat working to pursue other options. If you're interested in learning more about ADF, which does have a solid base of built in functionality, check out this article on <a href="https://technology.amis.nl/2013/01/26/dear-javajee-developer-why-should-you-care-about-adf/">why you should care about ADF</a>.</p>
+<h3>Learning Styles</h3>
+<p>Much can be gained by examining others learning habits. I'm looking at it in regards to programming and foreign languages specifically, but there are generalities that can be made regardless of the subject matter.</p>
+<p>In reading several articles on the wonderful <a href="https://www.verbling.com/articles/">Verbling blog</a>, I've been struck by the variety of methods accomplished polyglots use, and also some of the consistent advice. Different methods (some used by the same person as their preference for learning style has evolved over time) include structured study up front, only speaking with others after a year or more, jumping right in with speech and trying to learn as you go, and spending a lot of time listening to the language before ever trying to learn words and grammar.</p>
+<p>The overlap comes with the admonition to use a style that you enjoy, and to have fun! I know I can get trapped in the idea of finding the "best" way to do something, while ignoring that the best ultimately comes down to what I'll actually follow through with. Yes, some methods can deliver results quicker than others, but that doesn't matter if you never stick with it long enough to see results. Nothing groundbreaking, but it's a good reminder from people who are accomplished at learning human languages. The same holds true for learning computer languages, or anything really.</p>
+<p><strong>Resources</strong>:</p>
 <ul>
-<li>Do you want to specify a URL prefix? (Y/n) n</li>
-<li>Do you want to upload your website using GitHub Pages (y/N) y</li>
-</ul>
-<p>I left the default for 'Is this your personal page (username.github.io)? (y/N)' since I'm running this site as a project page.</p>
-<p>you should have the following files and directories in your folder now</p>
-<div class="highlight"><pre>bin
-content
-develop_server.sh
-fabfile.py
-include
-lib
-local
-Makefile
-output
-pelicanconf.py
-publishconf.py
-</pre></div>
-
-
-<p>I decided to use markdown for writing the blog, so my final setup was running <code>pip install markdown</code>. If you want to use reStructuredText (.rst) then you don't need to install anything else.</p>
-<h2></h2>
-<p>Below are a list of sites I used in my quest to set up this blog. </p>
-<p>Resources:</p>
-<ul>
-<li><a href="http://docs.getpelican.com/en/3.5.0/">http://docs.getpelican.com/en/3.5.0/</a></li>
-<li><a href="http://chdoig.github.io/create-pelican-blog.html">http://chdoig.github.io/create-pelican-blog.html</a></li>
-<li><a href="http://www.circuidipity.com/pelican.html">http://www.circuidipity.com/pelican.html</a></li>
-<li><a href="http://www.mattmakai.com/introduction-to-pelican.html">http://www.mattmakai.com/introduction-to-pelican.html</a></li>
-<li><a href="http://nafiulis.me/making-a-static-blog-with-pelican.html">http://nafiulis.me/making-a-static-blog-with-pelican.html</a></li>
+<li><a href="http://docs.oracle.com/cd/E23943_01/apirefs.1111/e12419/tagdoc/af_autoSuggestBehavior.html">autoSuggestBehavior</a></li>
+<li><a href="http://www.oracle.com/technetwork/developer-tools/adf/learnmore/62-autosuggestbehavior-177811.pdf">Oracle autoSuggestBehavior tutorial</a></li>
+<li><a href="http://vtkrishn.com/2012/07/17/afautosuggestbehavior-intro/">Java ADF af:autosuggestBehavior intro</a></li>
+<li><a href="https://technology.amis.nl/2013/01/26/dear-javajee-developer-why-should-you-care-about-adf/">why you should care about ADF</a></li>
+<li><a href="https://www.verbling.com/articles/">Verbling blog</a></li>
+<li><a href="http://www.thepolyglotdream.com/">The Polyglot Dream</a></li>
 </ul>
             </div><!-- /.entry-content -->
 
