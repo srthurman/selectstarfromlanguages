@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>A Review of Transitland by Mapzen</title>
+        <meta charset="utf-8" />
+        <link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Full Atom Feed" />
+        <link href="http://www.selectstarfromlanguages.com/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/pygment.css" />
+
+        <script src="http://www.selectstarfromlanguages.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.selectstarfromlanguages.com/">Select * from Languages <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.selectstarfromlanguages.com/">Home</a></li>
+
+                <li><a href="http://www.selectstarfromlanguages.com/pages/about.html">About</a></li>
+                <li><a href="http://www.selectstarfromlanguages.com/pages/resources.html">Resources</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.selectstarfromlanguages.com/transitland_review.html" rel="bookmark"
+                   title="Permalink to A Review of Transitland by Mapzen">A Review of Transitland by Mapzen</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-09-17T00:00:00+02:00">
+                Thu 17 September 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.selectstarfromlanguages.com/author/sara-thurman.html"> Sara Thurman</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>Recently I built <a href="https://github.com/srthurman/TransitTally">Transit Tally</a>, a small data visualization of transit options available within the DC metro area. To get the GTFS data I used the awesome <a href="https://transit.land/">Transitland</a> by <a href="https://mapzen.com/">Mapzen</a>. Transitland is, in its own words:</p>
+<blockquote>
+<p>A community-run and -edited timetable and map of public transit service around the world.</p>
+</blockquote>
+<p>At present, transit data are fetched from a GTFS zip archive, and related back to other sources. Pretty cool, right? Right.</p>
+<p>Transitland is available to use as an API (the datastore), through a Python or Ruby client, or by way of the in-browser <a href="https://transit.land/playground/">Playground</a>. While developing Transit Tally, I explored the Transitland API and Python client. This post is a review of what worked well, and what might benefit from some tweaks.</p>
+<h3>Expand Documentation</h3>
+<p>The Python client documentation gets you up and running, but it doesn't tell you the methods and variables available. The code is well written, as are the tests, so it's not too difficult to read and play around to figure out how to use it. At the same time, it's nice to be able to jump right into using a product without going having to go through the code base first.</p>
+<p>For documentation models, the <a href="http://leafletjs.com/reference.html">Leaflet documentation</a> is very well written and organized. Having something similar for the Transitland Python client would be a big help.</p>
+<h3>Loading Large Datasets</h3>
+<p>I used the <a href="https://github.com/transitland/transitland-python-client#working-with-a-feed">Python client</a> to load DC's transit feed (WMATA) and attempted to call the <code>load_gtfs</code> method. After a few failed tries, I closed out all other programs and timed it. ~25 minutes later everything was loaded.</p>
+<p>I was able to have more success using the <code>mzgtfs preload</code> method directly, cutting down load time to a couple of minutes. However, after talking with a Mapzen team member and looking through the Python client code, I learned using <code>mzgtfs</code> isn't going to give the same capabilities as using the <code>transitland</code> package directly.</p>
+<h3>API for Public Use</h3>
+<p>The API is great, and the endpoints are pretty self explanatory. The documentation on running locally is much appreciated for those of us who like to tinker with moving parts--for fun or as part of the learning process.</p>
+<p>Looking at it from the perspective of someone trying to get up and running quickly, it would be nice if there was a public version that made all the data currently in the feed registry available. An access token and/or a free use limit tier is certainly reasonable, as long as it means the API is fully populated.</p>
+<h3>Getting GTFS to JSON is a Breeze</h3>
+<p>Getting transit agencies' data is very simple using both the API and the Python client. Here's all it took to get the data for WMATA:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">transitland.registry</span>
+<span class="kn">import</span> <span class="nn">mzgtfs.feed</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c">#initial setup - only do once</span>
+<span class="n">registry</span> <span class="o">=</span> <span class="n">transitland</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">FeedRegistry</span><span class="p">(</span><span class="s">&#39;../transitland-feed-registry&#39;</span><span class="p">)</span>
+<span class="n">feed</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="s">&#39;f-dqc-wmata&#39;</span><span class="p">)</span>
+<span class="n">feed</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s">&#39;wmata-current-gtfs.zip&#39;</span><span class="p">)</span>
+
+<span class="c">#Main processing</span>
+<span class="n">wmata</span> <span class="o">=</span> <span class="n">mzgtfs</span><span class="o">.</span><span class="n">feed</span><span class="o">.</span><span class="n">Feed</span><span class="p">(</span><span class="s">&#39;wmata-current-gtfs.zip&#39;</span><span class="p">)</span>
+<span class="n">wmata</span><span class="o">.</span><span class="n">preload</span><span class="p">()</span>
+<span class="n">metro</span> <span class="o">=</span> <span class="n">wmata</span><span class="o">.</span><span class="n">agency</span><span class="p">(</span><span class="s">&#39;MET&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;wmata_metro.json&#39;</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">metro</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span><span class="n">outfile</span><span class="p">)</span>
+</pre></div>
+
+
+<p>In addition to the regularly scheduled JSON, the API can also return certain endpoints directly as GEOJSON. That alone is worth its weight in CSV files.</p>
+<h3>Linking Data Sources - Brilliant!</h3>
+<p>More goodies: Transitland also "serves as a 'crosswalk' between different identifiers for the same feeds and agencies". Having one place to reference the feeds for an agency is helpful. Best of all, at least to me, stops are linked to OpenStreetMap (OSM) ways! Mighty useful for areas that don't currently have much transit data in OSM. Gets me thinking about possible methodologies for designating transit routes.</p>
+<p>Transitland is a useful and fun tool, and I'm excited to see how it continues to grow. If you haven't tried it for yourself, check it out, along with Mapzen's plethora of other awesome tools.</p>
+<p><strong>Resources</strong>:</p>
+<ul>
+<li><a href="https://transit.land/">Transitland</a></li>
+<li><a href="https://mapzen.com/">Mapzen</a></li>
+<li><a href="https://transit.land/playground/">Playground</a></li>
+<li><a href="https://github.com/srthurman/TransitTally">Transit Tally</a></li>
+<li><a href="http://leafletjs.com/reference.html">Leaflet documentation</a></li>
+</ul>
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="http://www.selectstarfromlanguages.com/pages/about.html">About</a></li>
+      <li><a href="http://www.selectstarfromlanguages.com/pages/resources.html">Resources</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://www.selectstarfromlanguages.com/category/misc.html">misc</a></li>
+		<li><a href="http://www.selectstarfromlanguages.com/category/science.html">Science!</a></li>
+		<li><a href="http://www.selectstarfromlanguages.com/category/weekly-roundup.html">Weekly Roundup</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/java.html">java</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/anki.html">anki</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/networking.html">networking</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/object-oriented.html">object oriented</a></li>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/french.html">french</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/seattle.html">seattle</a></li>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/portland.html">portland</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/tdd.html">tdd</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/testing.html">testing</a></li>
+	    <li class="tag-1"><a href="http://www.selectstarfromlanguages.com/tag/human-language.html">human language</a></li>
+	    <li class="tag-0"><a href="http://www.selectstarfromlanguages.com/tag/computer-language.html">computer language</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/srthurman">Github</a></li>
+    <li><a href="https://twitter.com/thurmSR">Twitter</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/srthurman" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/thurmSR" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://www.selectstarfromlanguages.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.selectstarfromlanguages.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.selectstarfromlanguages.com/theme/js/plugins.js"></script>
+</body>
+</html>
