@@ -36,7 +36,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 
 # Social widget
 SOCIAL = (('Github', 'https://github.com/srthurman'),
-          ('Twitter', 'https://twitter.com/thurmSR'),)
+          ('Twitter', 'https://twitter.com/thurmSR'),
+          ('Linkedin', 'https://www.linkedin.com/in/srthurman'),)
 
 DEFAULT_PAGINATION = 10
 
@@ -47,6 +48,7 @@ THEME = '/home/sarat/python/pelican_themes/pelican-themes/gum'
 
 GITHUB_URL = 'https://github.com/srthurman'
 TWITTER_URL = 'https://twitter.com/thurmSR'
+LINKEDIN_URL = 'https://www.linkedin.com/in/srthurman'
 
 #MD_EXTENSIONS = ['markdown.extensions.sane_lists']
 
