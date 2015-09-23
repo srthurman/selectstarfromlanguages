@@ -1,202 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-        <title>Select * from Languages - java</title>
         <meta charset="utf-8" />
-        <link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Full Atom Feed" />
+        <title>A Pelican Blog - java</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
 
-
-        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-
-        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/pygment.css" />
-
-        <script src="http://www.selectstarfromlanguages.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
-
-
-
-
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 </head>
 
 <body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about.html">About</a></li>
+                    <li><a href="/category/misc.html">misc</a></li>
+                    <li><a href="/category/science.html">Science!</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/oo_principles_python.html">Object Oriented Principles Part 1: Python</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-04-11T00:00:00+00:00">
+                Published: Sat 11 April 2015
+        </abbr>
+
+<p>In <a href="/category/misc.html">misc</a>. </p>
+<p>tags: <a href="/tag/computer-language.html">computer language</a> <a href="/tag/python.html">python</a> <a href="/tag/java.html">java</a> <a href="/tag/object-oriented.html">object oriented</a> </p>
+</footer><!-- /.post-info --><p>For my latest assignment at work, I need to learn Java, which seemed a little daunting at first. The syntax is much more verbose, and I haven't dealt with a compiled language before. As I was going through tutorials, I was presented with a lot of Object Oriented concepts I had not come into contact with before. I knew what objects and classes were, and was familiar with the idea of inheritance. But other concepts, like interfaces, constructors, and polymorphism, were new ideas, or at least new vocabulary.</p>
+<p>I wanted to investigate how some of these concepts are applied in Python and Javascript. This is part 1, exploring OO Programming and Python.</p>
+<p>It may be helpful to check out one of the resources below if you're rusty on or totally unfamiliar with OO programming. I won't go into the more common concepts in as much depth.</p>
+<h2>Class</h2>
+<p>A class is the blueprint for an object. It tells what data (variables) and methods (functions) an object should have. The basic syntax is:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">className</span><span class="p">(</span><span class="n">parentObject</span><span class="p">)</span>
+</pre></div>
 
 
-    <div class="container">
+<p>Pretty simple. Let's see an example:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">DothrakiMan</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">hairLength</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="c">## Units are inches, because Dothraki don&#39;t like the metric system either</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hairLength</span> <span class="o">=</span> <span class="n">hairLength</span>
 
-        <div class="row">
-
-          <header id="banner" class="body">
-                  <h1><a href="http://www.selectstarfromlanguages.com/">Select * from Languages <strong></strong></a></h1>
-          </header><!-- /#banner -->
-
-            <div id="navigation" class="navbar row">
-              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
-             
-              <ul class="columns">
-                <li><a href="http://www.selectstarfromlanguages.com/">Home</a></li>
-
-                <li><a href="http://www.selectstarfromlanguages.com/pages/about.html">About</a></li>
-                <li><a href="http://www.selectstarfromlanguages.com/pages/resources.html">Resources</a></li>
-
-              </ul>
-            </div>
-
-<section id="content">
+    <span class="k">def</span> <span class="nf">cutHair</span><span class="p">():</span>
+        <span class="n">hairLength</span> <span class="o">=</span> <span class="mi">0</span>      
+</pre></div>
 
 
-
-   <div class="row">
-
-
-        <div class="eleven columns">
-                 <ol id="post-list">
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.selectstarfromlanguages.com/java_adf_and_learning_styles.html" rel="bookmark" title="Permalink to Java ADF and Learning Styles">Java ADF and Learning Styles</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-31T00:00:00+02:00"> Sun 31 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.selectstarfromlanguages.com/author/sara-thurman.html"> Sara Thurman</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>Built in functionality! Having fun!</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.selectstarfromlanguages.com/java_adf_and_learning_styles.html" rel="bookmark" title="Permalink to Java ADF and Learning Styles">Read more <i class="icon-arrow-right"></i></a></div>
+<p>Here we have a class to create a DothrakiMan. We've included the attributes of a name, and his hair length. He can cut his hair and, well that's it for now.</p>
+<h2>Object</h2>
+<p>An object is an <em>instance</em> of a class. In other words, an object is the thing you create with a class. Let's see an example.</p>
+<div class="highlight"><pre><span class="n">Drogo</span> <span class="o">=</span> <span class="n">DothrakiMan</span><span class="p">(</span><span class="s">&#39;Khal Drogo&#39;</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>       
+</pre></div>
 
 
+<p>Now we have the <strong>object</strong> Drogo, made from the <strong>class</strong> DothrakiMan. You can make as many objects as you want from that one class.</p>
+<p>Now that the bare basics are out of the way, let's talk about some more interesting things.</p>
+<h2>Encapsulation</h2>
+<p>There are two components to encapsulation.</p>
+<ol>
+<li>grouping data and functions into a single, logical group.</li>
+<li>protecting those data and methods/preventing unauthorized access, aka "data hiding".</li>
+</ol>
+<p>In defining the term, some sources use just one component, some use both. Whatever the case, encapsulation is most often acheived through the use of classes (there are exceptions, which we'll see with Javascript). The whole purpose of a class is to group data and functionality into a convenient package.</p>
+<p>Python really only uses the first component. Data hiding is kind of possible, but not fully.</p>
+<p>A little background: in Java, when creating data or methods, you include the keyword 'public', 'private', or 'protected'. Those define whether or not you can directly access an item from the object created from a given class. If we pretend we created our class DothrakiMan and object Drogo in Java, and set the <code>name</code> attribute as private, you would not be able to do <code>Drogo.name</code>. Instead you would have to use what's called a getter method, discussed below.</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">EncapsulationClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pub</span><span class="p">,</span> <span class="n">semi</span><span class="p">,</span> <span class="n">prv</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">public</span> <span class="o">=</span> <span class="n">pub</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_semiPrivate</span> <span class="o">=</span> <span class="n">semi</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__private</span> <span class="o">=</span> <span class="n">prv</span>
 
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/computer-language.html">computer language</a>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/human-language.html">human language</a>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/java.html">java</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.selectstarfromlanguages.com/oo_principles_Python.html" rel="bookmark" title="Permalink to Object Oriented Principles Part 1: Python">Object Oriented Principles Part 1: Python</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-12T00:00:00+02:00"> Sun 12 April 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.selectstarfromlanguages.com/author/sara-thurman.html"> Sara Thurman</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>What I learned about Python from learning Java</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.selectstarfromlanguages.com/oo_principles_Python.html" rel="bookmark" title="Permalink to Object Oriented Principles Part 1: Python">Read more <i class="icon-arrow-right"></i></a></div>
+<span class="n">encapsulateObject</span> <span class="o">=</span> <span class="n">EncapsulationClass</span><span class="p">()</span>
+</pre></div>
 
 
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/computer-language.html">computer language</a>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/python.html">Python</a>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/java.html">java</a>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/object-oriented.html">object oriented</a>
-                                </div>
-
+<p>In our <code>EncapsulationCLass</code> class, we have three different attributes. The first one, <code>self.public</code>, we have seen before. You can access it directly on an object like <code>encapsulateObject.public</code>.</p>
+<p>In the second attribute, <code>self._semiPrivate</code>, the underscore at the beginning of the name denotes that this attribute should be regarded as private. It's letting others know you shouldn't access it directly. However, there is no enforced protection. <code>encapsulateObject._semiPrivate</code> would run without error, and return the value of the attribute.</p>
+<p>The last attribute has two _ at the beginning, and does provide a little extra protection through "name mangling." If you were to try to run <code>encapsulateObject.__private</code>, you would get the error below:</p>
+<div class="highlight"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">AttributeError</span><span class="p">:</span> <span class="s">&#39;EncapsulationClass&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s">&#39;__private&#39;</span>
+</pre></div>
 
 
-                        </article></li>
-                </ol><!-- /#posts-list -->
-
-        </div><!-- /.eleven.columns -->
-        
-<div class="three columns">
-
-<h4>Pages</h4>
-
- <ul>
-      <li><a href="http://www.selectstarfromlanguages.com/pages/about.html">About</a></li>
-      <li><a href="http://www.selectstarfromlanguages.com/pages/resources.html">Resources</a></li>
-  </ul>
-
-<h4>Categories</h4>
+<p>But if you ran <code>encapsulateObject._EncapsulationClass__private</code>, blamo, you have access to the attribute. So by using <code>objectName._className__privateAttributeName</code> you can access those so called private attributes and methods.</p>
+<p><strong>Resources</strong>:</p>
 <ul>
-		<li><a href="http://www.selectstarfromlanguages.com/category/misc.html">misc</a></li>
-		<li><a href="http://www.selectstarfromlanguages.com/category/science.html">Science!</a></li>
-		<li><a href="http://www.selectstarfromlanguages.com/category/weekly-roundup.html">Weekly Roundup</a></li>
-</ul>
+<li><a href="http://www.jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/">Jeff Knupp - Python Classes and OO Programming</a></li>
+<li><a href="http://learnpythonthehardway.org/book/index.html">Learn Python the Hard Way - Lessons 40-44</a></li>
+<li><a href="http://www.lynda.com/Programming-tutorials/Foundations-of-Programming-Object-Oriented-Design/96949-2.html">Lynda.com - Object-Oriented Design</a></li>
+<li><a href="http://www.python-course.eu/object_oriented_programming.php">python-course.eu - Object Oriented Python</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
 
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/oo_principles_python_and_javascript.html" rel="bookmark"
+                           title="Permalink to Object Oriented Principles for Python and Javascript">Object Oriented Principles for Python and Javascript</a></h1>
+                </header>
 
-<h4>Tags</h4>
-	<ul>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/dataviz.html">dataviz</a></li>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/seattle.html">seattle</a></li>
-	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/python.html">Python</a></li>
-	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/java.html">java</a></li>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/data.html">data</a></li>
-	    <li class="tag-0"><a href="http://www.selectstarfromlanguages.com/tag/computer-language.html">computer language</a></li>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/anki.html">anki</a></li>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/portland.html">portland</a></li>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/tdd.html">tdd</a></li>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/testing.html">testing</a></li>
-	    <li class="tag-1"><a href="http://www.selectstarfromlanguages.com/tag/human-language.html">human language</a></li>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/demographics.html">demographics</a></li>
-	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/french.html">french</a></li>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/object-oriented.html">object oriented</a></li>
-	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/networking.html">networking</a></li>
-</ul>
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-04-05T00:00:00+00:00">
+                Published: Sun 05 April 2015
+        </abbr>
 
+<p>In <a href="/category/misc.html">misc</a>. </p>
+<p>tags: <a href="/tag/computer-language.html">computer language</a> <a href="/tag/python.html">python</a> <a href="/tag/javascript.html">javascript</a> <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>What I learned about these two languages from learning Java</p>
+                <a class="readmore" href="/oo_principles_python_and_javascript.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-<nav class="widget">
-  <h4>Social</h4>
-  <ul>
-    <li><a href="https://github.com/srthurman">Github</a></li>
-    <li><a href="https://twitter.com/thurmSR">Twitter</a></li>
-  </ul>
-</nav>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
 
-</div> </div><!-- /.row -->
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
 
-       </div><!-- /.row -->
-    </div><!-- /.container -->
-
-
-       <div class="container.nopad bg">
-
-    
-        <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
-                    </address>
-          </div>
-
-
-          <div class="seven columns">
-            <div class="row">
-              <ul class="socbtns">
-
-                <li><div class="btn primary"><a href="https://github.com/srthurman" target="_blank">Github</a></div></li>
-
-                <li><div class="btn twitter"><a href="https://twitter.com/thurmSR" target="_blank">Twitter</a></div></li>
-
-
-
-              </ul>
-            </div>
-          </div>
-        </footer>
-
-    </div>
-
-
-  <script src="http://www.selectstarfromlanguages.com/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://www.selectstarfromlanguages.com/theme/js/libs/gumby.min.js"></script>
-  <script src="http://www.selectstarfromlanguages.com/theme/js/plugins.js"></script>
 </body>
 </html>

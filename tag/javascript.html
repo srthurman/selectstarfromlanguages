@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - javascript</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about.html">About</a></li>
+                    <li><a href="/category/misc.html">misc</a></li>
+                    <li><a href="/category/science.html">Science!</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/oo_principles_python_and_javascript.html">Object Oriented Principles for Python and Javascript</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-04-05T00:00:00+00:00">
+                Published: Sun 05 April 2015
+        </abbr>
+
+<p>In <a href="/category/misc.html">misc</a>. </p>
+<p>tags: <a href="/tag/computer-language.html">computer language</a> <a href="/tag/python.html">python</a> <a href="/tag/javascript.html">javascript</a> <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info --><h3>Javascript</h3>
+<p>So, the thing with Javascript is it doesn't have classes. Instead, you create functions which serve as the blueprints for making objects. These functions are your defacto classes. It may seem odd that you would use a function to create objects, but in Javascript, functions are (takes off the Scooby Doo villain mask)...objects! Functions are objects, and you can use them to create other objects. Confused yet?</p>
+<p>It's ok. I link to some resources at the bottom that will explain things in more detail. The main thing to be aware of is that, because your "classes" are just functions, </p>
+<h2>Inheritance</h2>
+<h3>Python</h3>
+<p>Inheritance in Python is incredibly simple. That's nice, as it will be a nice offset from Javascript.</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">className</span><span class="p">(</span><span class="n">parentObject</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Javascript</h3>
+<p>Yet again, Javascript is proving to be a bit trickier. Because Javascript doesn't have proper classes, there isn't one way to implement inheritance. That could be good since you have options, and thus flexibility, but it can also feel a bit overwhelming. Rather than go over all the different methods, which is a whole discussion on its own, I'll show the technique often touted as the best(according to JSissexy and professional web dev book): Parasitic Combination Inheritance.</p>
+<p>Don't worry about that name, but now you know what to search for if you want more information.
+The thing I was getting confused about was the .call(this,...) line. When you use .call, you're actually modifying the object you pass in. So when you call Question.call(this,...) you're modifying the <code>this</code> of your subclass, aka the instance you create.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
