@@ -1,42 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Transitioning my Manila Transit app to Google App Engine, Part 1</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+        <title>Transitioning my Manila Transit app to Google App Engine, Part 1</title>
+        <meta charset="utf-8" />
+        <link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Full Atom Feed" />
+        <link href="http://www.selectstarfromlanguages.com/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/pygment.css" />
+
+        <script src="http://www.selectstarfromlanguages.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
 </head>
 
 <body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">A Pelican Blog </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about.html">About</a></li>
-                    <li class="active"><a href="/category/misc.html">misc</a></li>
-                    <li><a href="/category/science.html">Science!</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.selectstarfromlanguages.com/">Select * from Languages <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.selectstarfromlanguages.com/">Home</a></li>
+
+                <li><a href="http://www.selectstarfromlanguages.com/pages/about.html">About</a></li>
+                <li><a href="http://www.selectstarfromlanguages.com/pages/resources.html">Resources</a></li>
+
+              </ul>
+            </div>
+
 <section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/drafts/manila_transit_on_GAE_part1.html" rel="bookmark"
-           title="Permalink to Transitioning my Manila Transit app to Google App Engine, Part 1">Transitioning my Manila Transit app to Google App Engine, Part 1</a></h1>
-    </header>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-03-17T00:00:00+00:00">
-                Published: Tue 17 March 2015
-        </abbr>
+   <div class="row">
+        <div class="eleven columns">
 
-<p>In <a href="/category/misc.html">misc</a>. </p>
-<p>tags: <a href="/tag/programming.html">programming</a> <a href="/tag/github.html">github</a> <a href="/tag/python.html">python</a> <a href="/tag/postgresql.html">postgresql</a> <a href="/tag/postgis.html">postgis</a> <a href="/tag/google-app-engine.html">google app engine</a> <a href="/tag/map.html">map</a> </p>
-</footer><!-- /.post-info -->      <p>Part 1: Overview of project. Getting GTFS feeds, putting them in PostGIS and creating routes. Getting GEOJSON results.
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.selectstarfromlanguages.com/drafts/manila_transit_on_GAE_part1.html" rel="bookmark"
+                   title="Permalink to Transitioning my Manila Transit app to Google App Engine, Part 1">Transitioning my Manila Transit app to Google App Engine, Part 1</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-03-17T00:00:00+01:00">
+                Tue 17 March 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.selectstarfromlanguages.com/author/sara-thurman.html"> Sara Thurman</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>Part 1: Overview of project. Getting GTFS feeds, putting them in PostGIS and creating routes. Getting GEOJSON results.
 Part 2: Installing GAE. Setting up the API for GEOJSON results.
 Part 3: Creating the web app on GAE consuming the API. Integrating with GitHub for route editing updates.</p>
 <p>THIS IS PART 1
@@ -90,27 +120,101 @@ In your terminal run:</p>
 <p>FOR PART 3:
 NVMND, this won't work: Create an <code>alias</code> for running gae devserver.py file. See http://lifehacker.com/270799/create-terminal-shortcuts on creating an alias.</p>
 <p>Resources: https://help.ubuntu.com/community/PostgreSQL</p>
-    </div><!-- /.entry-content -->
+            </div><!-- /.entry-content -->
 
-  </article>
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="http://www.selectstarfromlanguages.com/pages/about.html">About</a></li>
+      <li><a href="http://www.selectstarfromlanguages.com/pages/resources.html">Resources</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://www.selectstarfromlanguages.com/category/misc.html">misc</a></li>
+		<li><a href="http://www.selectstarfromlanguages.com/category/science.html">Science!</a></li>
+		<li><a href="http://www.selectstarfromlanguages.com/category/weekly-roundup.html">Weekly Roundup</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/dataviz.html">dataviz</a></li>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/french.html">french</a></li>
+	    <li class="tag-1"><a href="http://www.selectstarfromlanguages.com/tag/human-language.html">human language</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/data.html">data</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/portland.html">portland</a></li>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/java.html">java</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/demographics.html">demographics</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/tdd.html">tdd</a></li>
+	    <li class="tag-0"><a href="http://www.selectstarfromlanguages.com/tag/computer-language.html">computer language</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/object-oriented.html">object oriented</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/testing.html">testing</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/seattle.html">seattle</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/anki.html">anki</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/networking.html">networking</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/srthurman">Github</a></li>
+    <li><a href="https://twitter.com/thurmSR">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/srthurman">Linkedin</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
 </section>
-        <section id="extras" class="body">
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+       </div><!-- /.row -->
+    </div><!-- /.container -->
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+       <div class="container.nopad bg">
 
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/srthurman" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/thurmSR" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://www.selectstarfromlanguages.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.selectstarfromlanguages.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.selectstarfromlanguages.com/theme/js/plugins.js"></script>
 </body>
 </html>

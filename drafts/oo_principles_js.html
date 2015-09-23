@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 
-        <title>Select * from Languages - object oriented</title>
+        <title>Object Oriented Principles Part 2: Javascript</title>
         <meta charset="utf-8" />
         <link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Full Atom Feed" />
+        <link href="http://www.selectstarfromlanguages.com/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -44,44 +45,46 @@
               </ul>
             </div>
 
-<section id="content">
-
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-                 <ol id="post-list">
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.selectstarfromlanguages.com/oo_principles_Python.html" rel="bookmark" title="Permalink to Object Oriented Principles Part 1: Python">Object Oriented Principles Part 1: Python</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-12T00:00:00+02:00"> Sun 12 April 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.selectstarfromlanguages.com/author/sara-thurman.html"> Sara Thurman</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>What I learned about Python from learning Java</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.selectstarfromlanguages.com/oo_principles_Python.html" rel="bookmark" title="Permalink to Object Oriented Principles Part 1: Python">Read more <i class="icon-arrow-right"></i></a></div>
 
 
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.selectstarfromlanguages.com/drafts/oo_principles_js.html" rel="bookmark"
+                   title="Permalink to Object Oriented Principles Part 2: Javascript">Object Oriented Principles Part 2: Javascript</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-04-05T00:00:00+02:00">
+                Sun 05 April 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.selectstarfromlanguages.com/author/sara-thurman.html"> Sara Thurman</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h3>Javascript</h3>
+<p>So, the thing with Javascript is it doesn't have classes. Instead, you create functions which serve as the blueprints for making objects. These functions are your defacto classes. It may seem odd that you would use a function to create objects, but in Javascript, functions are (takes off the Scooby Doo villain mask)...objects! Functions are objects, and you can use them to create other objects. Confused yet?</p>
+<p>It's ok. I link to some resources at the bottom that will explain things in more detail. The main thing to be aware of is that, because your "classes" are just functions, </p>
+<h2>Inheritance</h2>
+<h3>Python</h3>
+<p>Inheritance in Python is incredibly simple. That's nice, as it will be a nice offset from Javascript.</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">className</span><span class="p">(</span><span class="n">parentObject</span><span class="p">)</span>
+</pre></div>
 
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/computer-language.html">computer language</a>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/python.html">Python</a>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/java.html">java</a>
-                                            <a class="danger label" href="http://www.selectstarfromlanguages.com/tag/object-oriented.html">object oriented</a>
-                                </div>
 
+<h3>Javascript</h3>
+<p>Yet again, Javascript is proving to be a bit trickier. Because Javascript doesn't have proper classes, there isn't one way to implement inheritance. That could be good since you have options, and thus flexibility, but it can also feel a bit overwhelming. Rather than go over all the different methods, which is a whole discussion on its own, I'll show the technique often touted as the best(according to JSissexy and professional web dev book): Parasitic Combination Inheritance.</p>
+<p>Don't worry about that name, but now you know what to search for if you want more information.
+The thing I was getting confused about was the .call(this,...) line. When you use .call, you're actually modifying the object you pass in. So when you call Question.call(this,...) you're modifying the <code>this</code> of your subclass, aka the instance you create.</p>
+            </div><!-- /.entry-content -->
 
-
-                        </article></li>
-                </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
-        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -130,10 +133,8 @@
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->
