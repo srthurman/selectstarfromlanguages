@@ -1,5 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Select * from Languages</title><link href="http://www.selectstarfromlanguages.com/" rel="alternate"></link><link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" rel="self"></link><id>http://www.selectstarfromlanguages.com/</id><updated>2015-09-18T00:00:00+02:00</updated><entry><title>Effects of Urbanization on Gender Equality</title><link href="http://www.selectstarfromlanguages.com/data_analysis_research_project.html" rel="alternate"></link><updated>2015-09-18T00:00:00+02:00</updated><author><name>Sara Thurman</name></author><id>tag:www.selectstarfromlanguages.com,2015-09-18:data_analysis_research_project.html</id><summary type="html">&lt;p&gt;I'm currently enrolled in Wesleyan's &lt;a href="https://www.coursera.org/learn/data-visualization"&gt;Data Management and Visualization&lt;/a&gt; course through &lt;a href="https://www.coursera.org/"&gt;Coursera&lt;/a&gt;. As part of the assignments, I'll be blogging on my research topic--posting updates and findings along with my process for analyzing the data.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Select * from Languages</title><link href="http://www.selectstarfromlanguages.com/" rel="alternate"></link><link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" rel="self"></link><id>http://www.selectstarfromlanguages.com/</id><updated>2015-09-27T00:00:00+02:00</updated><entry><title>Effects of Urbanization on Gender Equality: Part 2</title><link href="http://www.selectstarfromlanguages.com/urbanization_and_gender_first_analysis.html" rel="alternate"></link><updated>2015-09-27T00:00:00+02:00</updated><author><name>Sara Thurman</name></author><id>tag:www.selectstarfromlanguages.com,2015-09-27:urbanization_and_gender_first_analysis.html</id><summary type="html">&lt;p&gt;For my assignment in week 2 of Wesleyan's &lt;a href="https://www.coursera.org/learn/data-visualization"&gt;Data Management and Visualization&lt;/a&gt; course, I created frequency distributions of my data using Python's Pandas, and the Spyder IDE.&lt;/p&gt;
+&lt;p&gt;I'll be posting this on Github as well, but for the convenience of my classmates, below is the code I used to create the frequency distributions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt;
+
+&lt;span class="c"&gt;#low_memory = False: increases efficiency when running the file&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pandas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;urbanization_education_data.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;low_memory&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;#upperCase all DataFrame column names&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;#bug fix for display formats to avoid runtime errors&lt;/span&gt;
+&lt;span class="n"&gt;pandas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_option&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;display.float_format&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%f&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PER_URBAN_2010&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PER_URBAN_2010&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert_objects&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_numeric&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;GIRLS_IN_SCHOOL_RATIO&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;GIRLS_IN_SCHOOL_RATIO&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert_objects&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_numeric&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_BOYS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_BOYS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert_objects&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_numeric&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_GIRLS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_GIRLS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert_objects&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_numeric&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_TOTAL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_TOTAL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert_objects&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_numeric&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;sub_gis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;GIRLS_IN_SCHOOL_RATIO&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="n"&gt;sub_primary_school&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_TOTAL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Counts of percent of population living in an Urban Area in 2010&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ct_urban&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PER_URBAN_2010&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ct_urban&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Distribution of percent of population living in an Urban Area in 2010&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;pt_urban&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PER_URBAN_2010&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pt_urban&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Count of ratio of girls to boys in Primary and Secondary school&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ct_gis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sub_gis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;GIRLS_IN_SCHOOL_RATIO&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ct_gis&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Percentage of ratio of girls to boys in Primary and Secondary school&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;pt_gis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sub_gis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;GIRLS_IN_SCHOOL_RATIO&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sub_gis&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pt_gis&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Count of percent of boys completing primary school&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ct_school_boys&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sub_primary_school&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_BOYS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ct_school_boys&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Distribution of percent of boys completing primary school&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;pt_school_boys&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sub_primary_school&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_BOYS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sub_primary_school&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pt_school_boys&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Count of percent of girls completing primary school&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ct_school_girls&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sub_primary_school&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_GIRLS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ct_school_girls&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Distribution of percent of girls completing primary school&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;pt_school_girls&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sub_primary_school&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_GIRLS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sub_primary_school&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pt_school_girls&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Count of percent of girls &amp;amp; boys completing primary school&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ct_school_total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sub_primary_school&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_TOTAL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ct_school_total&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Distribution of percent of girls &amp;amp; boys completing primary school&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;pt_school_total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sub_primary_school&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRIMARY_SCHOOL_TOTAL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sub_primary_school&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pt_school_total&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And here are the resulting frequency distributions:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Counts of percent of population living in an Urban Area in 2010
+PER_URBAN_2010
+10    14
+20    19
+30    28
+40    22
+50    25
+60    32
+70    24
+80    23
+90    23
+
+Distribution of percent of population living in an Urban Area in 2010
+PER_URBAN_2010
+10    6.666667
+20    9.047619
+30   13.333333
+40   10.476190
+50   11.904762
+60   15.238095
+70   11.428571
+80   10.952381
+90   10.952381
+
+Count of ratio of girls to boys in Primary and Secondary school
+GIRLS_IN_SCHOOL_RATIO
+63      1
+65      1
+75      1
+78      3
+79      1
+80      1
+81      1
+85      1
+87      1
+88      2
+89      2
+90      2
+93      3
+94      2
+95      4
+96      2
+97     13
+98     22
+99     13
+100    14
+101    15
+102    13
+103     7
+104     4
+105     1
+106     3
+107     2
+108     2
+
+Percentage of ratio of girls to boys in Primary and Secondary school
+GIRLS_IN_SCHOOL_RATIO
+63     0.729927
+65     0.729927
+75     0.729927
+78     2.189781
+79     0.729927
+80     0.729927
+81     0.729927
+85     0.729927
+87     0.729927
+88     1.459854
+89     1.459854
+90     1.459854
+93     2.189781
+94     1.459854
+95     2.919708
+96     1.459854
+97     9.489051
+98    16.058394
+99     9.489051
+100   10.218978
+101   10.948905
+102    9.489051
+103    5.109489
+104    2.919708
+105    0.729927
+106    2.189781
+107    1.459854
+108    1.459854
+
+Count of percent of boys completing primary school
+PRIMARY_SCHOOL_BOYS
+0       2
+40      4
+50      6
+60      8
+70     13
+80     19
+90     46
+100    34
+
+Distribution of percent of boys completing primary school
+PRIMARY_SCHOOL_BOYS
+0      1.515152
+40     3.030303
+50     4.545455
+60     6.060606
+70     9.848485
+80    14.393939
+90    34.848485
+100   25.757576
+
+Count of percent of girls completing primary school
+PRIMARY_SCHOOL_GIRLS
+0       2
+20      1
+30      3
+40      3
+50      9
+60      7
+70      8
+80     16
+90     47
+100    36
+
+Distribution of percent of girls completing primary school
+PRIMARY_SCHOOL_GIRLS
+0      1.515152
+20     0.757576
+30     2.272727
+40     2.272727
+50     6.818182
+60     5.303030
+70     6.060606
+80    12.121212
+90    35.606061
+100   27.272727
+
+Count of percent of girls &amp;amp; boys completing primary school
+PRIMARY_SCHOOL_TOTAL
+30      2
+40      4
+50      6
+60     10
+70      9
+80     17
+90     46
+100    38
+
+Distribution of percent of girls &amp;amp; boys completing primary school
+PRIMARY_SCHOOL_TOTAL
+30     1.515152
+40     3.030303
+50     4.545455
+60     7.575758
+70     6.818182
+80    12.878788
+90    34.848485
+100   28.787879
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;For all variables except &lt;code&gt;GIRLS_IN_SCHOOL_RATIO&lt;/code&gt;, the data represent the percentage of the population in question. The number listed as a category represents the lower range of a decile of the data distribution (so 90 represents 90%-100%, 80 represents 80%-89.99%, etc.). In some cases the ratio can exceed 100%, and so 100 is included as a category to include those cases. For detailed information on each of the variables used here, see my &lt;a href="https://docs.google.com/spreadsheets/d/1zYf7P7lnjFMdVp6CCQV0t0TgFRBUfa7oz9TqIfaZSzY/edit?usp=sharing"&gt;Codebook&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;GIRLS_IN_SCHOOL_RATIO&lt;/code&gt; represents the Gender Parity Index of girls to boys in primary and secondary school. The important point to know for this analysis is that 100 indicates gender parity/equality in schooling, &amp;gt; 100 indicates gender inequality favoring females (more girls than boys in school), and &amp;lt; 100 indicates gender inequality favoring males (more boys than girls in school). That's a high level explanation, and I encourage you to look up 'Gender Parity' if you're intrested in knowing more.&lt;/p&gt;
+&lt;p&gt;Calculations for &lt;code&gt;GIRLS_IN_SCHOOL_RATIO&lt;/code&gt; were created from a subset of the larger dataset which excludes countries missing data values for that field. Similarly, each of the the &lt;code&gt;PRIMARY_SCHOOL&lt;/code&gt; calculations used a subset of data which excludes countries missing data in the &lt;code&gt;PRIMARY_SCHOOL_TOTAL&lt;/code&gt; field.&lt;/p&gt;
+&lt;p&gt;Looking at the frequency distributions, we can see that urbanization rates are pretty evenly distributed, with the biggest distribution, ~15%, occuring in the 60 (60%-70%) category. Education levels for both boys and girls tend to be at a pretty high level, and the girls in school ratio distribution clusters around 100. At a global scale, boys and girls are enrolled in school at relatively even rates, and most are finishing primary and secondary school.&lt;/p&gt;
+&lt;p&gt;Regarding the original research question (Is there an association between a country's level of urbanization and female education levels?), there aren't any strong conclusions to be made at this point as we haven't looked at the per-country data in detail yet.&lt;/p&gt;</summary><category term="data"></category><category term="dataviz"></category><category term="demographics"></category><category term="python"></category><category term="pandas"></category></entry><entry><title>Effects of Urbanization on Gender Equality</title><link href="http://www.selectstarfromlanguages.com/data_analysis_research_project.html" rel="alternate"></link><updated>2015-09-18T00:00:00+02:00</updated><author><name>Sara Thurman</name></author><id>tag:www.selectstarfromlanguages.com,2015-09-18:data_analysis_research_project.html</id><summary type="html">&lt;p&gt;I'm currently enrolled in Wesleyan's &lt;a href="https://www.coursera.org/learn/data-visualization"&gt;Data Management and Visualization&lt;/a&gt; course through &lt;a href="https://www.coursera.org/"&gt;Coursera&lt;/a&gt;. As part of the assignments, I'll be blogging on my research topic--posting updates and findings along with my process for analyzing the data.&lt;/p&gt;
 &lt;p&gt;Starting out, I was interested in studying the impact living in an urban area has on a population. Looking through the data available on &lt;a href="http://www.gapminder.org/"&gt;GapMinder&lt;/a&gt;, I've decided to focus on urbanization rates and gender equality. Specifically, is there an association between a country's level of urbanization and female education levels?&lt;/p&gt;
 &lt;p&gt;Urbanization is measured as the percentage of a nation's population living in urban areas. To evaluate education levels, I'm including the female literacy rate, the female primary school completion rate, and the ratio of girls to boys in primary and secondary education. As each of these sources provides data across years and countries, it's possible to examine the urbanization-female education connection spatially and temporally. See my &lt;a href="https://docs.google.com/spreadsheets/d/1zYf7P7lnjFMdVp6CCQV0t0TgFRBUfa7oz9TqIfaZSzY/edit?usp=sharing"&gt;Codebook&lt;/a&gt; for specific sources and more detailed definitions.&lt;/p&gt;
 &lt;p&gt;Reviewing available literature on the impact of urban life and urbanization patterns on gender equality in general, it seems the results can be a mixed bag. On the one hand:&lt;/p&gt;

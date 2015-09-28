@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>Effects of Urbanization on Gender Equality: Part 2</title>
+        <meta charset="utf-8" />
+        <link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Full Atom Feed" />
+        <link href="http://www.selectstarfromlanguages.com/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.selectstarfromlanguages.com/theme/pygment.css" />
+
+        <script src="http://www.selectstarfromlanguages.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.selectstarfromlanguages.com/">Select * from Languages <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.selectstarfromlanguages.com/">Home</a></li>
+
+                <li><a href="http://www.selectstarfromlanguages.com/pages/about.html">About</a></li>
+                <li><a href="http://www.selectstarfromlanguages.com/pages/resources.html">Resources</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.selectstarfromlanguages.com/urbanization_and_gender_first_analysis.html" rel="bookmark"
+                   title="Permalink to Effects of Urbanization on Gender Equality: Part 2">Effects of Urbanization on Gender Equality: Part 2</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-09-27T00:00:00+02:00">
+                Sun 27 September 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.selectstarfromlanguages.com/author/sara-thurman.html"> Sara Thurman</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>For my assignment in week 2 of Wesleyan's <a href="https://www.coursera.org/learn/data-visualization">Data Management and Visualization</a> course, I created frequency distributions of my data using Python's Pandas, and the Spyder IDE.</p>
+<p>I'll be posting this on Github as well, but for the convenience of my classmates, below is the code I used to create the frequency distributions.</p>
+<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="c">#low_memory = False: increases efficiency when running the file</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;urbanization_education_data.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c">#upperCase all DataFrame column names</span>
+<span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c">#bug fix for display formats to avoid runtime errors</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="s">&#39;</span><span class="si">%f</span><span class="s">&#39;</span><span class="o">%</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s">&#39;PER_URBAN_2010&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PER_URBAN_2010&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_BOYS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_BOYS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_GIRLS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_GIRLS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">sub_gis</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="n">sub_primary_school</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Counts of percent of population living in an Urban Area in 2010&quot;</span><span class="p">)</span>
+<span class="n">ct_urban</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PER_URBAN_2010&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ct_urban</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Distribution of percent of population living in an Urban Area in 2010&quot;</span><span class="p">)</span>
+<span class="n">pt_urban</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PER_URBAN_2010&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pt_urban</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Count of ratio of girls to boys in Primary and Secondary school&quot;</span><span class="p">)</span>
+<span class="n">ct_gis</span><span class="o">=</span> <span class="n">sub_gis</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ct_gis</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Percentage of ratio of girls to boys in Primary and Secondary school&quot;</span><span class="p">)</span>
+<span class="n">pt_gis</span> <span class="o">=</span> <span class="n">sub_gis</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">sub_gis</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pt_gis</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Count of percent of boys completing primary school&quot;</span><span class="p">)</span>
+<span class="n">ct_school_boys</span> <span class="o">=</span> <span class="n">sub_primary_school</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PRIMARY_SCHOOL_BOYS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ct_school_boys</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Distribution of percent of boys completing primary school&quot;</span><span class="p">)</span>
+<span class="n">pt_school_boys</span> <span class="o">=</span> <span class="n">sub_primary_school</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PRIMARY_SCHOOL_BOYS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">sub_primary_school</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pt_school_boys</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Count of percent of girls completing primary school&quot;</span><span class="p">)</span>
+<span class="n">ct_school_girls</span> <span class="o">=</span> <span class="n">sub_primary_school</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PRIMARY_SCHOOL_GIRLS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ct_school_girls</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Distribution of percent of girls completing primary school&quot;</span><span class="p">)</span>
+<span class="n">pt_school_girls</span> <span class="o">=</span> <span class="n">sub_primary_school</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PRIMARY_SCHOOL_GIRLS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">sub_primary_school</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pt_school_girls</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Count of percent of girls &amp; boys completing primary school&quot;</span><span class="p">)</span>
+<span class="n">ct_school_total</span> <span class="o">=</span> <span class="n">sub_primary_school</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ct_school_total</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Distribution of percent of girls &amp; boys completing primary school&quot;</span><span class="p">)</span>
+<span class="n">pt_school_total</span> <span class="o">=</span> <span class="n">sub_primary_school</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">sub_primary_school</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pt_school_total</span><span class="p">)</span>
+</pre></div>
+
+
+<p>And here are the resulting frequency distributions:</p>
+<div class="highlight"><pre>Counts of percent of population living in an Urban Area in 2010
+PER_URBAN_2010
+10    14
+20    19
+30    28
+40    22
+50    25
+60    32
+70    24
+80    23
+90    23
+
+Distribution of percent of population living in an Urban Area in 2010
+PER_URBAN_2010
+10    6.666667
+20    9.047619
+30   13.333333
+40   10.476190
+50   11.904762
+60   15.238095
+70   11.428571
+80   10.952381
+90   10.952381
+
+Count of ratio of girls to boys in Primary and Secondary school
+GIRLS_IN_SCHOOL_RATIO
+63      1
+65      1
+75      1
+78      3
+79      1
+80      1
+81      1
+85      1
+87      1
+88      2
+89      2
+90      2
+93      3
+94      2
+95      4
+96      2
+97     13
+98     22
+99     13
+100    14
+101    15
+102    13
+103     7
+104     4
+105     1
+106     3
+107     2
+108     2
+
+Percentage of ratio of girls to boys in Primary and Secondary school
+GIRLS_IN_SCHOOL_RATIO
+63     0.729927
+65     0.729927
+75     0.729927
+78     2.189781
+79     0.729927
+80     0.729927
+81     0.729927
+85     0.729927
+87     0.729927
+88     1.459854
+89     1.459854
+90     1.459854
+93     2.189781
+94     1.459854
+95     2.919708
+96     1.459854
+97     9.489051
+98    16.058394
+99     9.489051
+100   10.218978
+101   10.948905
+102    9.489051
+103    5.109489
+104    2.919708
+105    0.729927
+106    2.189781
+107    1.459854
+108    1.459854
+
+Count of percent of boys completing primary school
+PRIMARY_SCHOOL_BOYS
+0       2
+40      4
+50      6
+60      8
+70     13
+80     19
+90     46
+100    34
+
+Distribution of percent of boys completing primary school
+PRIMARY_SCHOOL_BOYS
+0      1.515152
+40     3.030303
+50     4.545455
+60     6.060606
+70     9.848485
+80    14.393939
+90    34.848485
+100   25.757576
+
+Count of percent of girls completing primary school
+PRIMARY_SCHOOL_GIRLS
+0       2
+20      1
+30      3
+40      3
+50      9
+60      7
+70      8
+80     16
+90     47
+100    36
+
+Distribution of percent of girls completing primary school
+PRIMARY_SCHOOL_GIRLS
+0      1.515152
+20     0.757576
+30     2.272727
+40     2.272727
+50     6.818182
+60     5.303030
+70     6.060606
+80    12.121212
+90    35.606061
+100   27.272727
+
+Count of percent of girls &amp; boys completing primary school
+PRIMARY_SCHOOL_TOTAL
+30      2
+40      4
+50      6
+60     10
+70      9
+80     17
+90     46
+100    38
+
+Distribution of percent of girls &amp; boys completing primary school
+PRIMARY_SCHOOL_TOTAL
+30     1.515152
+40     3.030303
+50     4.545455
+60     7.575758
+70     6.818182
+80    12.878788
+90    34.848485
+100   28.787879
+</pre></div>
+
+
+<p>For all variables except <code>GIRLS_IN_SCHOOL_RATIO</code>, the data represent the percentage of the population in question. The number listed as a category represents the lower range of a decile of the data distribution (so 90 represents 90%-100%, 80 represents 80%-89.99%, etc.). In some cases the ratio can exceed 100%, and so 100 is included as a category to include those cases. For detailed information on each of the variables used here, see my <a href="https://docs.google.com/spreadsheets/d/1zYf7P7lnjFMdVp6CCQV0t0TgFRBUfa7oz9TqIfaZSzY/edit?usp=sharing">Codebook</a>.</p>
+<p><code>GIRLS_IN_SCHOOL_RATIO</code> represents the Gender Parity Index of girls to boys in primary and secondary school. The important point to know for this analysis is that 100 indicates gender parity/equality in schooling, &gt; 100 indicates gender inequality favoring females (more girls than boys in school), and &lt; 100 indicates gender inequality favoring males (more boys than girls in school). That's a high level explanation, and I encourage you to look up 'Gender Parity' if you're intrested in knowing more.</p>
+<p>Calculations for <code>GIRLS_IN_SCHOOL_RATIO</code> were created from a subset of the larger dataset which excludes countries missing data values for that field. Similarly, each of the the <code>PRIMARY_SCHOOL</code> calculations used a subset of data which excludes countries missing data in the <code>PRIMARY_SCHOOL_TOTAL</code> field.</p>
+<p>Looking at the frequency distributions, we can see that urbanization rates are pretty evenly distributed, with the biggest distribution, ~15%, occuring in the 60 (60%-70%) category. Education levels for both boys and girls tend to be at a pretty high level, and the girls in school ratio distribution clusters around 100. At a global scale, boys and girls are enrolled in school at relatively even rates, and most are finishing primary and secondary school.</p>
+<p>Regarding the original research question (Is there an association between a country's level of urbanization and female education levels?), there aren't any strong conclusions to be made at this point as we haven't looked at the per-country data in detail yet.</p>
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="http://www.selectstarfromlanguages.com/pages/about.html">About</a></li>
+      <li><a href="http://www.selectstarfromlanguages.com/pages/resources.html">Resources</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://www.selectstarfromlanguages.com/category/misc.html">misc</a></li>
+		<li><a href="http://www.selectstarfromlanguages.com/category/science.html">Science!</a></li>
+		<li><a href="http://www.selectstarfromlanguages.com/category/weekly-roundup.html">Weekly Roundup</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/data.html">data</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/portland.html">portland</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/pandas.html">pandas</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/testing.html">testing</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/seattle.html">seattle</a></li>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/french.html">french</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/object-oriented.html">object oriented</a></li>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/demographics.html">demographics</a></li>
+	    <li class="tag-1"><a href="http://www.selectstarfromlanguages.com/tag/human-language.html">human language</a></li>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/dataviz.html">dataviz</a></li>
+	    <li class="tag-0"><a href="http://www.selectstarfromlanguages.com/tag/computer-language.html">computer language</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/tdd.html">tdd</a></li>
+	    <li class="tag-1"><a href="http://www.selectstarfromlanguages.com/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/anki.html">anki</a></li>
+	    <li class="tag-4"><a href="http://www.selectstarfromlanguages.com/tag/networking.html">networking</a></li>
+	    <li class="tag-2"><a href="http://www.selectstarfromlanguages.com/tag/java.html">java</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/srthurman">Github</a></li>
+    <li><a href="https://twitter.com/thurmSR">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/srthurman">Linkedin</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/srthurman" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/thurmSR" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://www.selectstarfromlanguages.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.selectstarfromlanguages.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.selectstarfromlanguages.com/theme/js/plugins.js"></script>
+</body>
+</html>
