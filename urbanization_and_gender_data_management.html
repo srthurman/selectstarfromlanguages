@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>Effects of Urbanization on Gender Equality: Part 2</title>
+        <title>Effects of Urbanization on Gender Equality: Part 3</title>
         <meta charset="utf-8" />
         <link href="http://www.selectstarfromlanguages.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Full Atom Feed" />
         <link href="http://www.selectstarfromlanguages.com/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Select * from Languages Categories Atom Feed" />
@@ -53,59 +53,79 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.selectstarfromlanguages.com/urbanization_and_gender_first_analysis.html" rel="bookmark"
-                   title="Permalink to Effects of Urbanization on Gender Equality: Part 2">Effects of Urbanization on Gender Equality: Part 2</a></h2>
+                <a href="http://www.selectstarfromlanguages.com/urbanization_and_gender_data_management.html" rel="bookmark"
+                   title="Permalink to Effects of Urbanization on Gender Equality: Part 3">Effects of Urbanization on Gender Equality: Part 3</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-09-27T00:00:00+02:00">
-                Sun 27 September 2015
+              <abbr class="published" title="2015-10-04T00:00:00+02:00">
+                Sun 04 October 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.selectstarfromlanguages.com/author/sara-thurman.html"> Sara Thurman</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>For my assignment in week 2 of Wesleyan's <a href="https://www.coursera.org/learn/data-visualization">Data Management and Visualization</a> course, I created frequency distributions of my data using Python's Pandas, and the Spyder IDE.</p>
-<p>I'll be posting this on Github as well, but for the convenience of my classmates, below is the code I used to create the frequency distributions.</p>
+              <p>It appears I jumped ahead in my assignment for week 2 of Wesleyan's <a href="https://www.coursera.org/learn/data-visualization">Data Management and Visualization</a> course when I re-grouped some of the data. But I still have an update for week 3 by doing the same thing, but this time with Python/Pandas.</p>
+<p>I'll be posting this on Github as well, but for the convenience of my classmates, here is the code for this weeks results.</p>
 <div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">pandas</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 
 <span class="c">#low_memory = False: increases efficiency when running the file</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;urbanization_education_data.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;urbanization_education_data_raw.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="c">#upperCase all DataFrame column names</span>
+<span class="c">#upperCase all DatFrame column names</span>
 <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
 <span class="c">#bug fix for display formats to avoid runtime errors</span>
 <span class="n">pandas</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="s">&#39;</span><span class="si">%f</span><span class="s">&#39;</span><span class="o">%</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">data</span><span class="p">[</span><span class="s">&#39;PER_URBAN_2010&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PER_URBAN_2010&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">data</span><span class="p">[</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s">&#39;PER_URBAN_2011&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PER_URBAN_2011&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_BOYS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_BOYS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_GIRLS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_GIRLS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-<span class="n">sub_gis</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
-<span class="n">sub_primary_school</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="c">##create data subsets</span>
+<span class="n">sub_gis</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">())]</span>
+<span class="n">sub_primary_school</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">())]</span>
 
-<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+<span class="c">#Function to group data from percents into groups</span>
+<span class="k">def</span> <span class="nf">GROUP_BY_TENS</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">100</span> <span class="k">else</span> \
+    <span class="mi">90</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">90</span> <span class="k">else</span> \
+    <span class="mi">80</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">80</span> <span class="k">else</span> \
+    <span class="mi">70</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">70</span> <span class="k">else</span> \
+    <span class="mi">60</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">60</span> <span class="k">else</span> \
+    <span class="mi">50</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">50</span> <span class="k">else</span> \
+    <span class="mi">40</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">40</span> <span class="k">else</span> \
+    <span class="mi">30</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">30</span> <span class="k">else</span> \
+    <span class="mi">20</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">else</span> \
+    <span class="mi">10</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="k">else</span> \
+    <span class="mi">0</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Counts of percent of population living in an Urban Area in 2010&quot;</span><span class="p">)</span>
-<span class="n">ct_urban</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PER_URBAN_2010&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="c">#Add new PER_URBAN variable</span>
+<span class="n">data</span><span class="p">[</span><span class="s">&#39;PER_URBAN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">apply</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">GROUP_BY_TENS</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="s">&#39;PER_URBAN_2011&#39;</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c">#Recalculate PRIMART_SCHOOL variables</span>
+<span class="n">sub_primary_school</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_primary_school</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">GROUP_BY_TENS</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="s">&#39;PRIMARY_SCHOOL_TOTAL&#39;</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sub_primary_school</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_GIRLS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_primary_school</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">GROUP_BY_TENS</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="s">&#39;PRIMARY_SCHOOL_GIRLS&#39;</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sub_primary_school</span><span class="p">[</span><span class="s">&#39;PRIMARY_SCHOOL_BOYS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_primary_school</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">GROUP_BY_TENS</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="s">&#39;PRIMARY_SCHOOL_BOYS&#39;</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Counts of percent of population living in an Urban Area in 2011&quot;</span><span class="p">)</span>
+<span class="n">ct_urban</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PER_URBAN&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">ct_urban</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Distribution of percent of population living in an Urban Area in 2010&quot;</span><span class="p">)</span>
-<span class="n">pt_urban</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PER_URBAN_2010&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Distribution of percent of population living in an Urban Area in 2011&quot;</span><span class="p">)</span>
+<span class="n">pt_urban</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;PER_URBAN&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">pt_urban</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Count of ratio of girls to boys in Primary and Secondary school&quot;</span><span class="p">)</span>
 <span class="n">ct_gis</span><span class="o">=</span> <span class="n">sub_gis</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">ct_gis</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Percentage of ratio of girls to boys in Primary and Secondary school&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Distribution of ratio of girls to boys in Primary and Secondary school&quot;</span><span class="p">)</span>
 <span class="n">pt_gis</span> <span class="o">=</span> <span class="n">sub_gis</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;GIRLS_IN_SCHOOL_RATIO&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">sub_gis</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">pt_gis</span><span class="p">)</span>
 
@@ -135,93 +155,92 @@
 </pre></div>
 
 
-<p>And here are the resulting frequency distributions:</p>
-<div class="highlight"><pre>Counts of percent of population living in an Urban Area in 2010
-PER_URBAN_2010
-10    14
-20    19
-30    28
-40    22
-50    25
-60    32
-70    24
-80    23
-90    23
-
-Distribution of percent of population living in an Urban Area in 2010
-PER_URBAN_2010
-10    6.666667
-20    9.047619
-30   13.333333
-40   10.476190
-50   11.904762
-60   15.238095
-70   11.428571
-80   10.952381
-90   10.952381
-
+<p>If you're not familiar with the syntax I'm using in the <code>GROUP_BY_TENS</code> function, see this StackOverflow question on <a href="http://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Python and ternary conditional operators</a>.</p>
+<p>And the frequency distributions:</p>
+<div class="highlight"><pre>Counts of percent of population living in an Urban Area in 2011
+PER_URBAN
+10     14
+20     19
+30     28
+40     22
+50     25
+60     32
+70     24
+80     23
+90     17
+100     6
+dtype: int64
+Distribution of percent of population living in an Urban Area in 2011
+PER_URBAN
+10     6.666667
+20     9.047619
+30    13.333333
+40    10.476190
+50    11.904762
+60    15.238095
+70    11.428571
+80    10.952381
+90     8.095238
+100    2.857143
+dtype: float64
 Count of ratio of girls to boys in Primary and Secondary school
 GIRLS_IN_SCHOOL_RATIO
-63      1
-65      1
-75      1
-78      3
-79      1
-80      1
-81      1
-85      1
-87      1
-88      2
-89      2
-90      2
-93      3
-94      2
-95      4
-96      2
-97     13
-98     22
-99     13
-100    14
-101    15
-102    13
-103     7
-104     4
-105     1
-106     3
-107     2
-108     2
-
-Percentage of ratio of girls to boys in Primary and Secondary school
+64.000000      1
+66.000000      1
+75.000000      1
+79.000000      3
+80.000000      2
+82.000000      1
+86.000000      1
+88.000000      1
+89.000000      2
+90.000000      4
+94.000000      4
+95.000000      3
+96.000000      3
+97.000000      8
+98.000000     16
+99.000000     19
+100.000000    16
+101.000000    12
+102.000000    17
+103.000000     5
+104.000000     8
+105.000000     1
+106.000000     3
+107.000000     2
+108.000000     2
+109.000000     1
+dtype: int64
+Distribution of ratio of girls to boys in Primary and Secondary school
 GIRLS_IN_SCHOOL_RATIO
-63     0.729927
-65     0.729927
-75     0.729927
-78     2.189781
-79     0.729927
-80     0.729927
-81     0.729927
-85     0.729927
-87     0.729927
-88     1.459854
-89     1.459854
-90     1.459854
-93     2.189781
-94     1.459854
-95     2.919708
-96     1.459854
-97     9.489051
-98    16.058394
-99     9.489051
-100   10.218978
-101   10.948905
-102    9.489051
-103    5.109489
-104    2.919708
-105    0.729927
-106    2.189781
-107    1.459854
-108    1.459854
-
+64.000000     0.729927
+66.000000     0.729927
+75.000000     0.729927
+79.000000     2.189781
+80.000000     1.459854
+82.000000     0.729927
+86.000000     0.729927
+88.000000     0.729927
+89.000000     1.459854
+90.000000     2.919708
+94.000000     2.919708
+95.000000     2.189781
+96.000000     2.189781
+97.000000     5.839416
+98.000000    11.678832
+99.000000    13.868613
+100.000000   11.678832
+101.000000    8.759124
+102.000000   12.408759
+103.000000    3.649635
+104.000000    5.839416
+105.000000    0.729927
+106.000000    2.189781
+107.000000    1.459854
+108.000000    1.459854
+109.000000    0.729927
+dtype: float64
 Count of percent of boys completing primary school
 PRIMARY_SCHOOL_BOYS
 0       2
@@ -230,9 +249,9 @@ PRIMARY_SCHOOL_BOYS
 60      8
 70     13
 80     19
-90     46
-100    34
-
+90     45
+100    35
+dtype: int64
 Distribution of percent of boys completing primary school
 PRIMARY_SCHOOL_BOYS
 0      1.515152
@@ -241,9 +260,9 @@ PRIMARY_SCHOOL_BOYS
 60     6.060606
 70     9.848485
 80    14.393939
-90    34.848485
-100   25.757576
-
+90    34.090909
+100   26.515152
+dtype: float64
 Count of percent of girls completing primary school
 PRIMARY_SCHOOL_GIRLS
 0       2
@@ -254,9 +273,9 @@ PRIMARY_SCHOOL_GIRLS
 60      7
 70      8
 80     16
-90     47
-100    36
-
+90     46
+100    37
+dtype: int64
 Distribution of percent of girls completing primary school
 PRIMARY_SCHOOL_GIRLS
 0      1.515152
@@ -267,9 +286,9 @@ PRIMARY_SCHOOL_GIRLS
 60     5.303030
 70     6.060606
 80    12.121212
-90    35.606061
-100   27.272727
-
+90    34.848485
+100   28.030303
+dtype: float64
 Count of percent of girls &amp; boys completing primary school
 PRIMARY_SCHOOL_TOTAL
 30      2
@@ -278,9 +297,9 @@ PRIMARY_SCHOOL_TOTAL
 60     10
 70      9
 80     17
-90     46
-100    38
-
+90     45
+100    39
+dtype: int64
 Distribution of percent of girls &amp; boys completing primary school
 PRIMARY_SCHOOL_TOTAL
 30     1.515152
@@ -289,16 +308,20 @@ PRIMARY_SCHOOL_TOTAL
 60     7.575758
 70     6.818182
 80    12.878788
-90    34.848485
-100   28.787879
+90    34.090909
+100   29.545455
+dtype: float64
 </pre></div>
 
 
+<p>Here's my analysis from my <a href="/urbanization_and_gender_first_analysis.html">Week 2 blog post</a>:</p>
+<blockquote>
 <p>For all variables except <code>GIRLS_IN_SCHOOL_RATIO</code>, the data represent the percentage of the population in question. The number listed as a category represents the lower range of a decile of the data distribution (so 90 represents 90%-100%, 80 represents 80%-89.99%, etc.). In some cases the ratio can exceed 100%, and so 100 is included as a category to include those cases. For detailed information on each of the variables used here, see my <a href="https://docs.google.com/spreadsheets/d/1zYf7P7lnjFMdVp6CCQV0t0TgFRBUfa7oz9TqIfaZSzY/edit?usp=sharing">Codebook</a>.</p>
 <p><code>GIRLS_IN_SCHOOL_RATIO</code> represents the Gender Parity Index of girls to boys in primary and secondary school. The important point to know for this analysis is that 100 indicates gender parity/equality in schooling, &gt; 100 indicates gender inequality favoring females (more girls than boys in school), and &lt; 100 indicates gender inequality favoring males (more boys than girls in school). That's a high level explanation, and I encourage you to look up 'Gender Parity' if you're intrested in knowing more.</p>
 <p>Calculations for <code>GIRLS_IN_SCHOOL_RATIO</code> were created from a subset of the larger dataset which excludes countries missing data values for that field. Similarly, each of the the <code>PRIMARY_SCHOOL</code> calculations used a subset of data which excludes countries missing data in the <code>PRIMARY_SCHOOL_TOTAL</code> field.</p>
 <p>Looking at the frequency distributions, we can see that urbanization rates are pretty evenly distributed, with the biggest distribution, ~15%, occuring in the 60 (60%-70%) category. Education levels for both boys and girls tend to be at a pretty high level, and the girls in school ratio distribution clusters around 100. At a global scale, boys and girls are enrolled in school at relatively even rates, and most are finishing primary and secondary school.</p>
-<p>Regarding the original research question (Is there an association between a country's level of urbanization and female education levels?), there aren't any strong conclusions to be made at this point as we haven't looked at the per-country data in detail yet.</p>
+</blockquote>
+<p>I know that was lazy, but...things look the same as during my analysis last week. The one difference you may note is in the counts for the 90 and 100 categories for the three <code>PRIMARY_SCHOOL</code> categories. The categorizing I did in my initial data management and that done with Pandas was a little different.</p>
             </div><!-- /.entry-content -->
 
 
